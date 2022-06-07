@@ -1,3 +1,40 @@
-.card{
-    margin-top: 2rem;
+body{
+    background-color: dimgray;
 }
+
+.card {
+    margin-top: 2rem;
+    margin-left: 2rem;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    display: flex;
+    border-radius: 15px;
+    background-color: lightgray;
+    border-color: aliceblue;
+    border-width: 2px;
+    
+    
+}
+
+img {
+    max-width: 12rem;
+    max-height: 12rem;
+    padding-left: 2rem;
+    
+}
+
+.btn{
+    margin-right: 20px;
+    background-color: black;
+    color: aliceblue;
+    border-radius: 15px;
+    border-color: black;
+}
+
+container{
+    height: 100%;
+    width: 100%;
+}
+
+
+
