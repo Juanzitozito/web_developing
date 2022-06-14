@@ -1,16 +1,20 @@
+main{
+    display: flex;
+}
+
+
 body{
     background-color: dimgray;
 }
 
 .card {
     margin-top: 2rem;
-    margin-left: 2rem;
+    margin-left: 5rem;
     padding-top: 25px;
     padding-bottom: 25px;
     display: flex;
     border-radius: 15px;
     background-color: lightgray;
-    border-color: aliceblue;
     border-width: 2px;
     box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
     
@@ -30,6 +34,15 @@ img {
     color: aliceblue;
     border-radius: 15px;
     border-color: black;
+}
+
+.price{
+    color: green;
+}
+
+#filtros{
+    background-color: gray;
+    height: 2000px;
 }
 
 
