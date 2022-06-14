@@ -7,7 +7,7 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="stylecommunity.css">
+    <link rel="stylesheet" type="text/css" href="style/styleprofile.css">
 </head>
 <body>
 
@@ -17,12 +17,12 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="news.html">Notícias</a>
+                        <a class="nav-link active" aria-current="page" href="news.php">Notícias</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="recommend.html">Recomendações de Produtos</a>
+                        <a class="nav-link active" href="recommend.php">Recomendações de Produtos</a>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Comunidade</a>
+                        <a class="nav-link disabled" href="#">Comunidade</a>
                     </li>
                 </ul>
                 <form class="d-flex">
@@ -32,6 +32,11 @@
             </div>
         </div>
     </nav>
+
+    <div>
+        
+    </div>
+
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

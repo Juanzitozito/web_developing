@@ -1,0 +1,13 @@
+body{
+    background-color: dimgray;
+    font-size: larger;
+    color: aliceblue;
+}
+
+.btn{
+    margin-right: 20px;
+    background-color: black;
+    color: aliceblue;
+    border-radius: 15px;
+    border-color: black;
+}
