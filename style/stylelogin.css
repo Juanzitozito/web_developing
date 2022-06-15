@@ -1,0 +1,53 @@
+body{
+    background-color:rgba(97, 99, 102, 0.753);
+    font-size: larger;
+    color: aliceblue;
+}
+
+.btn{
+    margin-right: 20px;
+    background-color: black;
+    color: aliceblue;
+    border-radius: 15px;
+    border-color: black;
+}
+.btn:hover{
+    color: grey;
+    transition: color 0.1s linear;
+}
+
+#divLogin{
+    width: 30rem;
+    height: 24rem;
+    background-color: lightgray;
+    border-color: aliceblue;
+    border-width: 2px;
+    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+    border-radius: 15px;
+    margin-top: 2rem;
+    
+
+}
+
+#dados{
+    padding-top: 20px;
+}
+
+h1{
+    color: black;
+    padding-top: 1rem;
+}
+label{
+    color: black;
+}
+
+#btnLogar{
+    margin-top: 2rem; 
+    margin-left: 24rem;
+}
+
+#cadastro{
+    margin-left: 23rem;
+    color: black;
+    font-size: 15px;
+}

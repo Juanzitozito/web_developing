@@ -1,6 +1,5 @@
 body{
     background-color: dimgray;
-    text-align: justify;
 }
 
 .card {
@@ -11,9 +10,12 @@ body{
     border-radius: 15px;
     background-color: lightgray;
     border-width: 2px;
-    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .2);
     cursor: pointer;
     
+}
+.g{
+    text-align: justify;
 }
 
 .card:hover{
@@ -26,19 +28,37 @@ body{
     color: azure;
 }
 
+
 .btn{
     margin-right: 20px;
     background-color: black;
     color: aliceblue;
     border-radius: 15px;
     border-color: black;
-    
-
 }
 .btn:hover{
     color: grey;
     transition: color 0.1s linear;
 }
+#btnNoticia{
+    font-size: 30px;
+    background-color: #0d6efd;
+    color: aliceblue;
+    border-radius: 15px;
+    padding: 15px;
+    margin-top: 6rem;
+}
+#btnNoticia:hover{
+    outline: solid 1px black;
+    outline-width: 5px;
+    transition: outline 0.1s linear;
+}
+#add{
+    margin-right: 5px;
+}
+
+
+
 
 .nav-link{
     margin-left: 1rem;
