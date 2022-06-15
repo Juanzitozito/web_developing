@@ -11,6 +11,10 @@ body{
     border-radius: 15px;
     border-color: black;
 }
+.btn:hover{
+    color: grey;
+    transition: color 0.1s linear;
+}
 
 img{
     width:12rem;
@@ -45,5 +49,11 @@ img{
 #logout{
     margin-left: 10rem;
     background-color: red;
+}
+
+#logout:hover{
+    font-weight: 500;
+    color: black;
+    transition: color 0.1s linear;
 }
     
