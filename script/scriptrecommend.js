@@ -7,7 +7,7 @@ onload = () => {
 
     document.querySelectorAll('.prod').forEach(item => {
         item.addEventListener('click', () => {
-          window.location.href = 'produto.html'
+          window.location.replace('produto.html')
         })
       })
   

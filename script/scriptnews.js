@@ -9,7 +9,7 @@ btnPerfil.addEventListener('click', () => {
 
 document.querySelectorAll('.not').forEach(item => {
       item.addEventListener('click', () => {
-        window.location.href = 'noticia.html'
+        location.replace('noticia.html')
       })
     })
 }

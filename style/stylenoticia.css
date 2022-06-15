@@ -1,0 +1,92 @@
+body{
+    background-color: dimgray;
+    color: aliceblue;
+}
+
+
+.header{
+    color: azure;
+}
+
+
+.btn{
+    margin-right: 20px;
+    background-color: black;
+    color: aliceblue;
+    border-radius: 15px;
+    border-color: black;
+}
+.btn:hover{
+    color: grey;
+    transition: color 0.1s linear;
+}
+
+.nav-link{
+    margin-left: 1rem;
+}
+
+
+#noticia{
+    height: 52rem;
+    background-color: aliceblue;
+    border-radius: 15px;
+    background-color: lightgray;
+    border-width: 2px;
+    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .2);
+    padding-right: 2rem;
+}
+
+#titulo{
+    color: black;
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+#imagemNoticia{
+    max-width: 700px;
+}
+
+#divImagem{
+    display: flex;
+    justify-content: center;
+}
+
+#conteudo{
+    padding-top: 1rem;
+    color: black;
+    font-size: 20px;
+}
+
+#autor{
+    display: flex;
+    justify-content: end;
+    padding-top: 3rem;
+}
+
+.card {
+    margin-top: 2rem;
+    margin-left: 2rem;
+    padding: 5px 5px 5px 5px;
+    display: flex;
+    border-radius: 15px;
+    background-color: lightgray;
+    border-width: 2px;
+    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .2);
+    cursor: pointer;
+    color: black;
+    
+}
+
+.card:hover{
+    outline: solid 1px;
+    outline-width: 5px;
+    transition: outline 0.15s linear;
+}
+
+h3{
+    margin-top: 2rem;
+}
+
+
