@@ -1,23 +1,31 @@
+main{
+    display: flex;
+}
+
+
 body{
     background-color: dimgray;
-    text-align: justify;
 }
 
 .card {
     margin-top: 2rem;
-    margin-left: 2rem;
-    padding: 5px 5px 5px 5px;
+    margin-left: 5rem;
+    padding-top: 25px;
+    padding-bottom: 25px;
     display: flex;
     border-radius: 15px;
     background-color: lightgray;
-
     border-width: 2px;
     box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
     
+    
 }
 
-.header{
-    color: azure;
+img {
+    max-width: 12rem;
+    max-height: 12rem;
+    padding-left: 2rem;
+    
 }
 
 .btn{
@@ -28,11 +36,21 @@ body{
     border-color: black;
 }
 
-.nav-link{
-    margin-left: 1rem;
+.price{
+    color: green;
+}
+
+#filtros{
+    background-color: gray;
+    height: 912px;
+}
+
+#vai{
+    padding-left: 1rem;
+    padding-top: 2rem;
 }
 
 
 
 
-    
+
