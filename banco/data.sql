@@ -1,1 +1,0 @@
-INSERT INTO usuario(email, nome, nick, dtnasc, cargo) VALUES('user@user.com', 'user', 'manito', '2022-01-01', 'usuário');
