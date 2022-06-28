@@ -215,9 +215,47 @@
           </div>
         </div>
         <div class="col-2" id="divBotao">
-          <button id="btnNoticia">
-            <img src="imagens/btn.png" width="40" id="add" />ADICIONAR
+          <button id="btnNoticia" class="btn" data-bs-toggle="modal" data-bs-target="#noticiaModal">
+            <img src="imagens/btn.png" width="40" id="add"/>ADICIONAR
           </button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="noticiaModal" tabindex="-1" aria-labelledby="noticiaModalLabel" aria-hidden="true">
+      <!--Div do formulário de noticia-->
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="noticiaModalLabel">Inserir noticia</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div>
+            <form method="POST">
+              <!--formulario de noticia-->
+              <div class="modal-body">
+                <input type="hidden" name="idUsuario" id="idUsuario"/>
+                <input type="hidden" name="idNoticia" id="idNoticia"/>
+                <div class="mb-3">
+                  <label for="titulo" class="form-label">titulo</label>
+                  <input type="text" class="form-control" name="titulo" id="titulo" placeholder="insira o titulo" required>
+                </div>
+                <div class="mb-3">
+                  <label for="descricao" class="form-label">descricao</label>
+                  <input type="text" class="form-control" name="descricao" id="descricao" placeholder="insira a descricao">
+                </div>
+                <div class="mb-3">
+                  <label for="conteudo" class="form-label">conteudo</label>
+                  <input type="textarea" class="form-control" name="conteudo" id="conteudo" placeholder="insira o conteudo" required>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                <button id="inserirNoticia" type="button" class="btn btn-success">Logar</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
