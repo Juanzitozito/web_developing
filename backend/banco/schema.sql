@@ -16,6 +16,7 @@ CREATE TABLE produto(
 CREATE TABLE usuario(
     id int AUTO_INCREMENT NOT NULL,
     email varchar(200) NOT NULL,
+    senha int(12) NOT NULL,
     nome varchar(200) NOT NULL,
     nick varchar(30) NOT NULL,
     dtnasc date NOT NULL,
