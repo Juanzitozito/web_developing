@@ -6,8 +6,6 @@ onload = () => {
 modal_noticia = new bootstrap.Modal(document.getElementById('noticiaModal'))
 const btnInserir = document.getElementById('inserirNoticia')
 
-
-
 const btnPerfil = document.getElementById('perfil')
 
 btnPerfil.addEventListener('click', () => {

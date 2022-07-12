@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt_BR">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -46,7 +46,8 @@
     <div class="container-fluid" id="divLogin">
       <h1>LOGIN</h1>
       <div id="dados">
-        <form action="autentucar.php">
+        <div id="alert" class="alert alert-danger d-none">Dados inválidos!</div>
+        <form method="post">
           <div class="form-group">
             <label for="email">Insira seu email:</label><br />
             <input
@@ -62,8 +63,8 @@
             <label for="password">Insira sua senha:</label><br />
             <input
               type="password"
-              id="password"
-              name="password"
+              id="senha"
+              name="senha"
               class="form-control"
               placeholder="senha"
               required
@@ -76,5 +77,8 @@
         <a href="..." id="cadastro">Cadastrar-se</a>
       </div>
     </div>
+
+    <script src="script/scriptlogin.js"></script>
+    <script src="logout.js"></script>
   </body>
 </html>
