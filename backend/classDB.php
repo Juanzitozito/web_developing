@@ -1,5 +1,6 @@
 <?php
-   /* require __DIR__ . '/vendor/autoload.php'; // não ta funcionando (rip dotenv)
+    require __DIR__ . '/vendor/autoload.php';
+
 
     use Dotenv\Dotenv;
 
@@ -16,10 +17,8 @@
             $instance = new PDO("mysql:host=localhost;dbname=" . $_ENV['DB_NAME'], $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
 
             return $instance;
-
-            echo $instance;
         }
-    }*/
+    }
 
     
 
