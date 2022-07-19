@@ -10,8 +10,6 @@ onload = async () => {
         const body = new FormData()
         body.append('email', inputEmail)
         body.append('senha', inputSenha)
-
-        console.log(body)
     
         const response = await fetch(`../backend/autenticar.php`, {
           method: "POST",
@@ -34,6 +32,7 @@ onload = async () => {
         }
       })
 
+      
 
 
 }
