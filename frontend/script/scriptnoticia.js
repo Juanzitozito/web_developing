@@ -1,13 +1,18 @@
-let btnLogin = null
+const frontendUrl = '//localhost/pw3/web_developing/frontend/'
+
+let btnInserir = null
 let btnLogout = null
 let btnPerfil = null
 
 onload = async () => {
-  const navbar = document.getElementById('acoes')
+
+const btnInserir = document.getElementById('inserirNoticia')
+const navbar = document.getElementById('acoes')
   
   const token = localStorage.getItem('token')
 
-  const btnLogout = document.createElement('BUTTON')
+
+const btnLogout = document.createElement('BUTTON')
   btnLogout.setAttribute('type', 'button')
   btnLogout.setAttribute('class', 'btn')
   btnLogout.setAttribute('style', 'background-color: red')
@@ -44,10 +49,11 @@ if(token){
   navbar.appendChild(btnLogin)
 }
 
-    document.querySelectorAll('.prod').forEach(item => {
-        item.addEventListener('click', () => {
-          window.location.replace('produto.html')
-        })
+
+
+document.querySelectorAll('.not').forEach(item => {
+      item.addEventListener('click', () => {
+        location.replace('noticia.html')
       })
-  
+    })
 }

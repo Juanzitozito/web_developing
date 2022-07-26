@@ -27,7 +27,7 @@ body{
 
 
 #noticia{
-    height: 52rem;
+    height: auto;
     background-color: aliceblue;
     border-radius: 15px;
     background-color: lightgray;
