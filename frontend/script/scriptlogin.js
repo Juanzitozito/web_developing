@@ -23,7 +23,6 @@ onload = async () => {
           setTimeout(() => {
             document.getElementById('alert').classList.toggle('d-none')
           }, 2000)
-          logout(false)
         }else {
           const {token, usuario} = data
           localStorage.setItem('token', token)

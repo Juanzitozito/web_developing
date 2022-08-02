@@ -6,7 +6,7 @@ require __DIR__ . '/interface.CRUD.php';
     class Usuario{
 
         private $id;
-        private $nick = "";
+        private $nickname = "";
         private $nome = "";
         private $email = "";
         private $senha = "";
@@ -17,7 +17,7 @@ require __DIR__ . '/interface.CRUD.php';
             return json_encode([
                 "id" => $this->id,
                 "nome" => $this->nome,
-                "nick" => $this->nick,
+                "nickname" => $this->nickname,
                 "email" => $this->email,
                 "senha" => $this->senha,
                 "dtnasc" => $this->dtnasc,
@@ -27,7 +27,7 @@ require __DIR__ . '/interface.CRUD.php';
 
         static function findbyPk ($id){
             $database = DB::getInstance();
-            $consulta = $database->prepare("SELECT * FROM usuarios WHERE id=:id");
+            $consulta = $database->prepare("SELECT * FROM usuario WHERE id=:id");
             $consulta->execute([":id" => $id]);
             $consulta->setFetchMode(PDO::FETCH_CLASS, "Usuario");
             return $consulta->fetch();
@@ -45,8 +45,8 @@ require __DIR__ . '/interface.CRUD.php';
         function setDtnasc($valor){
             $this->dtnasc = $valor;
         }
-        function setNick($valor){
-            $this->nick = $valor;
+        function setNickname($valor){
+            $this->nickname = $valor;
         }
         function setCargo($valor){
             $this->cargo = $valor;
@@ -63,8 +63,8 @@ require __DIR__ . '/interface.CRUD.php';
         function getDtnasc(){
             return $this->dtnasc;
         }
-        function getNick(){
-            return $this->nick;
+        function getNickname(){
+            return $this->nickname;
         }
         function getCargo(){
             return $this->cargo;
@@ -73,17 +73,17 @@ require __DIR__ . '/interface.CRUD.php';
         function inserir(){
             try{
                 $database = DB::getInstance();
-                $consulta = $database->prepare("INSERT INTO usuarios(email, nome, nick, senha, dtnasc, cargo) VALUES (:email, :nome, :nick, :senha, :dtnasc, :cargo)");
+                $consulta = $database->prepare("INSERT INTO usuario(email, nome, nickname, senha, dtnasc, cargo) VALUES (:email, :nome, :nickname, :senha, :dtnasc, :cargo)");
                 $consulta->execute([
                     ":email" => $this->email,
                     ":nome" => $this->nome,
-                    ":nick" => $this->nick,
+                    ":nickname" => $this->nickname,
                     ":senha" => $this->senha,
                     ":dtnasc" => $this->dtnasc,
                     ":cargo" => $this->cargo
 
                 ]);
-                $consulta = $database->prepare("SELECT id FROM usuarios ORDER BY id DESC LIMIT 1");
+                $consulta = $database->prepare("SELECT id FROM usuario ORDER BY id DESC LIMIT 1");
                 $consulta->execute();
                 $dados = $consulta->fetch(PDO::FETCH_ASSOC);
                 $this->id = $dados["id"];
@@ -96,12 +96,12 @@ require __DIR__ . '/interface.CRUD.php';
         function alterar(){
             try{
                 $database = DB::getInstance();
-                $consulta = $database->prepare("UPDATE usuarios SET email = :email, nome = :nome, nick = :nick  senha = :senha, dtnasc = :dtnasc, cargo = :cargo WHERE id = :id");
+                $consulta = $database->prepare("UPDATE usuario SET email = :email, nome = :nome, nickname = :nickname, senha = :senha, dtnasc = :dtnasc, cargo = :cargo WHERE id = :id");
                 $consulta->execute([
                     ":id" => $this->id,
                     ":email" => $this->email,
                     ":nome" => $this->nome,
-                    ":nick" => $this->nick,
+                    ":nickname" => $this->nickname,
                     ":senha" => $this->senha,
                     ":dtnasc" => $this->dtnasc,
                     ":cargo" => $this->cargo
@@ -115,7 +115,7 @@ require __DIR__ . '/interface.CRUD.php';
         function remover(){
             try{
                 $database = DB::getInstance();
-                $consulta = $database->prepare("DELETE FROM usuarios WHERE id = :id");
+                $consulta = $database->prepare("DELETE FROM usuario WHERE id = :id");
                 $consulta->execute([":id" => $this->id]);
             }
             catch(PDOException $e){

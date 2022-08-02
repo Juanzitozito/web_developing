@@ -18,7 +18,7 @@ CREATE TABLE usuario(
     email varchar(200) NOT NULL,
     senha int(12) NOT NULL,
     nome varchar(200) NOT NULL,
-    nick varchar(30) NOT NULL,
+    nickname varchar(30) NOT NULL,
     dtnasc date NOT NULL,
     cargo varchar(30) NOT NULL,
     PRIMARY KEY(id)
