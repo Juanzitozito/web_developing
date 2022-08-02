@@ -59,6 +59,10 @@ body{
 
 .nav-link{
     margin-left: 1rem;
+    border: white solid;
+    border-width: 2px;
+    border-radius: 10px;
+    padding: 2px
 }
 
 .img{

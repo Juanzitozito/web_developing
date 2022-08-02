@@ -12,14 +12,17 @@ const btnInserir = document.getElementById('inserirNoticia')
 const navbar = document.getElementById('acoes')
   
   const token = localStorage.getItem('token')
-  const usuario = localStorage.getItem('usuario')
+  const usuario = JSON.parse(localStorage.getItem('usuario'))
+
+  
+  
+  console.log(usuario)
 
 const btnLogout = document.createElement('BUTTON')
   btnLogout.setAttribute('type', 'button')
   btnLogout.setAttribute('class', 'btn')
   btnLogout.setAttribute('style', 'background-color: red')
   btnLogout.innerHTML = 'Logout';
- 
   btnLogout.addEventListener('click', () => {
     localStorage.removeItem('token')
     localStorage.removeItem('usuario')
@@ -53,9 +56,12 @@ if(token){
 
 
 
-document.querySelectorAll('.not').forEach(item => {
+
+const noticias = document.querySelectorAll('.not')
+
+noticias.forEach(item => {
       item.addEventListener('click', () => {
-        location.replace('noticia.html')
+         location.replace('noticia.html') 
       })
     })
 }

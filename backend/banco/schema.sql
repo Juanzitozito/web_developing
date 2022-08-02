@@ -7,7 +7,7 @@ CREATE TABLE produto(
     id int AUTO_INCREMENT NOT NULL,
     nome varchar(80) NOT NULL,
     preço decimal(6,2) NOT NULL,
-    descricao varchar(300) NOT NULL,
+    descricao varchar(500) NOT NULL,
     siteProduto varchar(255) NOT NULL,
     tipo varchar(40) NOT NULL,
     PRIMARY KEY(id)
