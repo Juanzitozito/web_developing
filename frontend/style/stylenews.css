@@ -23,6 +23,11 @@ body{
     outline-width: 5px;
     transition: outline 0.15s linear;
 }
+.card:not(:hover){
+    outline: solid 0px;
+    outline-width: 0px;
+    transition: outline 0.15s linear;
+}
 
 .header{
     color: azure;
@@ -63,6 +68,10 @@ body{
     border-width: 2px;
     border-radius: 10px;
     padding: 2px
+}
+.nav-link:hover{
+    padding: 5px;
+    transition: padding 0.15s linear;
 }
 
 .img{

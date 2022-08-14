@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 require_once dirname(__FILE__) . "/classDB.php";
-require __DIR__ . '/interface.CRUD.php';
+require __DIR__ . '/interfaceCRUD.php';
 
     class Usuario{
 

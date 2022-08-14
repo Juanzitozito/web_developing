@@ -1,13 +1,13 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 require_once dirname(__FILE__) . "/classDB.php";
-require __DIR__ . '/interface.CRUD.php';
+require __DIR__ . '/interfaceCRUD.php';
 
     class Produto{
 
         private $id;
         private $nome = "";
-        private $preço = "";
+        private $preco = "";
         private $descricao = "";
         private $siteProduto = "";
         private $tipo = "";
@@ -16,7 +16,7 @@ require __DIR__ . '/interface.CRUD.php';
             return json_encode([
                 "id" => $this->id,
                 "nome" => $this->nome,
-                "preço" => $this->preço,
+                "preco" => $this->preco,
                 "descricao" => $this->descricao,
                 "siteProduto" => $this->siteProduto,
                 "tipo" => $this->tipo
@@ -34,8 +34,8 @@ require __DIR__ . '/interface.CRUD.php';
         function setNome($valor){
             $this->nome = $valor;
         }
-        function setPreço($valor){
-            $this->preço = $valor;
+        function setpreco($valor){
+            $this->preco = $valor;
         }
         function setDescricao($valor){
             $this->descricao = $valor;
@@ -49,7 +49,7 @@ require __DIR__ . '/interface.CRUD.php';
         function getNome(){
             return $this->nome;
         }
-        function getPreço(){
+        function getpreco(){
             return $this->email;
         }
         function getDescricao(){
@@ -65,10 +65,10 @@ require __DIR__ . '/interface.CRUD.php';
         function inserir(){
             try{
                 $database = DB::getInstance();
-                $consulta = $database->prepare("INSERT INTO produto(nome, preço, descricao, siteProduto, tipo) VALUES (:nome, :preço, :descricao, :siteProduto, :tipo)");
+                $consulta = $database->prepare("INSERT INTO produto(nome, preco, descricao, siteProduto, tipo) VALUES (:nome, :preco, :descricao, :siteProduto, :tipo)");
                 $consulta->execute([
                     ":nome" => $this->nome,
-                    ":preço" => $this->preço,
+                    ":preco" => $this->preco,
                     ":descricao" => $this->descricao,
                     ":siteProduto" => $this->siteProduto,
                     ":tipo" => $this->tipo
@@ -87,11 +87,11 @@ require __DIR__ . '/interface.CRUD.php';
         function alterar(){
             try{
                 $database = DB::getInstance();
-                $consulta = $database->prepare("UPDATE produto SET nome = :nome, preço = :preço, descricao = :descricao, siteProduto = :siteProduto, tipo = :tipo WHERE id = :id");
+                $consulta = $database->prepare("UPDATE produto SET nome = :nome, preco = :preco, descricao = :descricao, siteProduto = :siteProduto, tipo = :tipo WHERE id = :id");
                 $consulta->execute([
                     ":id" => $this->id,
                     ":nome" => $this->nome,
-                    ":preço" => $this->preço,
+                    ":preco" => $this->preco,
                     ":descricao" => $this->descricao,
                     ":siteProduto" => $this->siteProduto,
                     ":tipo" => $this->tipo

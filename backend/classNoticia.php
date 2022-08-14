@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 require_once dirname(__FILE__) . "/classDB.php";
-require __DIR__ . '/interface.CRUD.php';
+require __DIR__ . '/interfaceCRUD.php';
 
 class Noticia{
     private $id;
@@ -9,7 +9,7 @@ class Noticia{
     private $imagem = '';
     private $descricao = '';
     private $conteudo = '';
-    private $autor = '';
+    private $idAutor = '';
     private $dataPublicacao;
     private $idUsuario;
 
@@ -20,7 +20,7 @@ class Noticia{
             "imagem" => $this->imagem,
             "descricao" => $this->descricao,
             "conteudo" => $this->conteudo,
-            "autor" => $this->autor,
+            "idAutor" => $this->idAutor,
             "dataPublicacao" => $this->dataPublicacao,
             "idUsuario" => $this->idUsuario
         ]);
@@ -37,11 +37,14 @@ class Noticia{
         function setTitulo($valor){
             $this->titulo = $valor;
         }
+        function setDescricao($valor){
+            $this->descricao = $valor;
+        }
         function setImagem($valor){
             $this->imagem = $valor;
         }
         function setConteudo($valor){
-            $this->descricao = $valor;
+            $this->conteudo = $valor;
         }
         function setAutor($valor){
             $this->dtnasc = $valor;
@@ -49,49 +52,54 @@ class Noticia{
         function getTitulo(){
             return $this->titulo;
         }
+        function getDescricao(){
+            return $this->descricao;
+        }
         function getImagem(){
             return $this->imagem;
         }
         function getConteudo(){
-            return $this->senha;
+            return $this->conteudo;
         }
         function getAutor(){
-            return $this->autor;
+            return $this->idAutor;
         }
-        //Faltam os getters de data e id usuario acho?????
 
 
         function inserir(){
             try{
                 $database = DB::getInstance();
-                $consulta = $database->prepare("INSERT INTO noticia(titulo, imagem, conteudo, autor, dataPublicacao, idUsuario) VALUES (:titulo, :imagem, :conteudo, :autor, :dataPublicacao, :idUsuario)");
+                $consulta = $database->prepare("INSERT INTO noticia(titulo, imagem, descricao , conteudo /*, idAutor, dataPublicacao, idUsuario */) VALUES (:titulo, :imagem, :descricao, :conteudo /*, :idAutor,  :dataPublicacao, :idUsuario */)");
                 $consulta->execute([
                     ":titulo" => $this->titulo,
                     ":imagem" => $this->imagem,
+                    ":descricao" => $this->descricao,
                     ":conteudo" => $this->conteudo,
-                    ":autor" => $this->autor,
+                    /* ":idAutor" => $this->idAutor,
                     ":dataPublicacao" => $this->dataPublicacao,
-                    ":idUsuario" => $this->idUsuario
+                    ":idUsuario" => $this->idUsuario  */
 
                 ]);
                 $consulta = $database->prepare("SELECT id FROM noticia ORDER BY id DESC LIMIT 1");
                 $consulta->execute();
                 $dados = $consulta->fetch(PDO::FETCH_ASSOC);
                 $this->id = $dados["id"];
+                return $consulta;
             }
             catch(PDOException $e){
-                throw new Exception("Ocorreu um erro interno!");
+                throw new Exception($e);
             }
         }
 
         function alterar(){
             try{
                 $database = DB::getInstance();
-                $consulta = $database->prepare("UPDATE noticia SET titulo = :titulo, imagem = :imagem, conteudo = :conteudo, WHERE id = :id");
+                $consulta = $database->prepare("UPDATE noticia SET titulo = :titulo, imagem = :imagem, descricao = :descricao, conteudo = :conteudo, WHERE id = :id");
                 $consulta->execute([
                     ":id" => $this->id,
                     ":titulo" => $this->titulo,
                     ":imagem" => $this->imagem,
+                    ":descricao" => $this->descricao,
                     ":conteudo" => $this->conteudo,
                 ]);
             }

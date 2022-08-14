@@ -10,7 +10,7 @@
     $database = DB::getInstance();
     try {
         
-        $consulta = $database->prepare("SELECT id, nome, cargo FROM usuario WHERE email=:email and senha =:senha");
+        $consulta = $database->prepare("SELECT id, nick, cargo FROM usuario WHERE email=:email and senha =:senha");
         $consulta->execute([":email" => $usuario, ':senha' => $senha]);
         $consulta->setFetchMode(PDO::FETCH_ASSOC);
         $dados = $consulta->fetch();
@@ -20,7 +20,7 @@
         }
 
         $jwt = JWT::encode($dados, $key, 'HS256');
-        print json_encode(['token' => "Bearer ${jwt}", 'usuario' => ['name' => $dados['nome'], 'cargo' => $dados['cargo']]]);
+        print json_encode(['token' => "Bearer ${jwt}", 'usuario' => ['id' => $dados['id'], 'nick' => $dados['nick'], 'cargo' => $dados['cargo']]]);
     } catch(Exception $e){
         die(json_encode(['error' => $e->getMessage()]));
     }

@@ -25,6 +25,11 @@ body{
     outline-width: 5px;
     transition: outline 0.15s linear;
 }
+.card:not(:hover){
+    outline: solid 0px;
+    outline-width: 0px;
+    transition: outline 0.15s linear;
+}
 
 img {
     max-width: 12rem;

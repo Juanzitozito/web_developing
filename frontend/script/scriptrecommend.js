@@ -1,3 +1,5 @@
+const frontendUrl = '//localhost/arquivosphp/web_developing/frontend/'
+
 let btnLogin = null
 let btnLogout = null
 let btnPerfil = null
@@ -24,7 +26,7 @@ onload = async () => {
   btnLogin.setAttribute('class', 'btn')
   btnLogin.innerHTML = 'Login';
   btnLogin.addEventListener('click', () => {
-    location.href = 'http://localhost/pw3/web_developing/frontend/login.html';
+    location.href = frontendUrl +'login.html';
   });
 
   const btnPerfil = document.createElement('BUTTON')
@@ -32,7 +34,7 @@ onload = async () => {
   btnPerfil.setAttribute('class', 'btn')
   btnPerfil.innerHTML = 'Ver Perfil'
   btnPerfil.addEventListener('click', () => {
-    location.href = 'http://localhost/pw3/web_developing/frontend/profile.html'
+    location.href = frontendUrl +'profile.html'
 });
   
 

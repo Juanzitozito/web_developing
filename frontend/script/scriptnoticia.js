@@ -1,4 +1,4 @@
-const frontendUrl = '//localhost/pw3/web_developing/frontend/'
+const frontendUrl = '//localhost/arquivosphp/web_developing/frontend/'
 
 let btnInserir = null
 let btnLogout = null
@@ -29,7 +29,7 @@ const btnLogout = document.createElement('BUTTON')
   btnLogin.setAttribute('class', 'btn')
   btnLogin.innerHTML = 'Login';
   btnLogin.addEventListener('click', () => {
-    location.href = 'http://localhost/pw3/web_developing/frontend/login.html';
+    location.href = frontendUrl +'login.html';
   });
 
   const btnPerfil = document.createElement('BUTTON')
@@ -37,7 +37,7 @@ const btnLogout = document.createElement('BUTTON')
   btnPerfil.setAttribute('class', 'btn')
   btnPerfil.innerHTML = 'Ver Perfil'
   btnPerfil.addEventListener('click', () => {
-    location.href = 'http://localhost/pw3/web_developing/frontend/profile.html'
+    location.href = frontendUrl +'profile.html'
 });
   
 

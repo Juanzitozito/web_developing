@@ -1,3 +1,5 @@
+const frontendUrl = '//localhost/arquivosphp/web_developing/frontend/'
+
 let btnLogar = null
 
 onload = async () => {
@@ -27,7 +29,7 @@ onload = async () => {
           const {token, usuario} = data
           localStorage.setItem('token', token)
           localStorage.setItem('usuario', JSON.stringify(usuario))
-          location.href="//localhost/pw3/web_developing/frontend/index.html";
+          location.href=frontendUrl + "/index.html";
         }
       })
 

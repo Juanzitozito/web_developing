@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS gamesite;
 
 CREATE DATABASE gamesite;
 
@@ -6,7 +7,7 @@ USE gamesite;
 CREATE TABLE produto(
     id int AUTO_INCREMENT NOT NULL,
     nome varchar(80) NOT NULL,
-    preço decimal(6,2) NOT NULL,
+    preco decimal(6,2) NOT NULL,
     descricao varchar(500) NOT NULL,
     siteProduto varchar(255) NOT NULL,
     tipo varchar(40) NOT NULL,
@@ -18,7 +19,7 @@ CREATE TABLE usuario(
     email varchar(200) NOT NULL,
     senha int(12) NOT NULL,
     nome varchar(200) NOT NULL,
-    nickname varchar(30) NOT NULL,
+    nick varchar(30) NOT NULL UNIQUE,
     dtnasc date NOT NULL,
     cargo varchar(30) NOT NULL,
     PRIMARY KEY(id)
@@ -31,7 +32,7 @@ CREATE TABLE noticia(
     descricao varchar(255) NOT NULL,
     conteudo varchar(1000) NOT NULL,
     dataPublicacao date NOT NULL,
-    idUsuario int NOT NULL,
-    PRIMARY KEY(id),
-    FOREIGN KEY(idUsuario) REFERENCES usuario(id)
+    /* idAutor int NOT NULL, */
+    PRIMARY KEY(id)/*,
+     FOREIGN KEY(idAutor) REFERENCES usuario(id) */
 );

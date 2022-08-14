@@ -19,6 +19,11 @@ body{
     outline-width: 5px;
     transition: outline 0.15s linear;
 }
+.card:not(:hover){
+    outline: solid 0px;
+    outline-width: 0px;
+    transition: outline 0.15s linear;
+}
 
 .btn{
     margin-right: 20px;
