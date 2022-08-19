@@ -8,6 +8,7 @@ try {
     $not->setDescricao($_POST['descricao']);
     $not->setImagem($_POST['imagem']);
     $not->setConteudo($_POST['conteudo']);
+    $not->setAutor($_POST['idAutor']);
     $not->inserir();
     print $not;
 }catch(Exception $e){

@@ -15,6 +15,9 @@ const navbar = document.getElementById('acoes')
   const usuario = JSON.parse(localStorage.getItem('usuario'))
 
   console.log(usuario)
+  console.log(token)
+
+
 
 const btnLogout = document.createElement('BUTTON')
   btnLogout.setAttribute('type', 'button')
@@ -27,6 +30,7 @@ const btnLogout = document.createElement('BUTTON')
     location.reload();
   });
 
+
   const btnLogin = document.createElement('BUTTON')
   btnLogin.setAttribute('type', 'button')
   btnLogin.setAttribute('class', 'btn')
@@ -34,6 +38,7 @@ const btnLogout = document.createElement('BUTTON')
   btnLogin.addEventListener('click', () => {
     location.href = frontendUrl+'login.html';
   });
+
 
   const btnPerfil = document.createElement('BUTTON')
   btnPerfil.setAttribute('type', 'button')
@@ -45,8 +50,9 @@ const btnLogout = document.createElement('BUTTON')
 
 
 
+
 btnInserir.addEventListener('click', async () => {
-  const autor = usuario.nick
+  const idAutor = usuario.id
   const titulo = document.getElementById('titulo').value
   const descricao = document.getElementById('descricao').value
   const imagem = document.getElementById('imagem').value
@@ -54,7 +60,7 @@ btnInserir.addEventListener('click', async () => {
 
   const body = new FormData()
   body.append('titulo', titulo)
-  body.append('autor', autor)
+  body.append('idAutor', idAutor)
   body.append('descricao', descricao)
   body.append('imagem', imagem)
   body.append('conteudo', conteudo)
@@ -63,9 +69,12 @@ btnInserir.addEventListener('click', async () => {
     method: "POST",
     body
   })
-      
+
+  console.log(response)
+    
 })
   
+
 
 if(token){
   navbar.appendChild(btnPerfil)
@@ -76,16 +85,33 @@ if(token){
 }
 
 
-const noticias = document.querySelectorAll('.not')
+
+
+/* const noticias = document.querySelectorAll('.not')
 
 noticias.forEach(item => {
       item.addEventListener('click', () => {
          location.replace('noticia.html') 
       })
-    })
+    }) */
 
 
 
+  const mainNewsCol = document.getElementById('mainNewsCol')
+  const header = document.createElement('h1')
+  header.setAttribute('class', 'header')
+  header.innerHTML = 'Principais Notícias'
+  mainNewsCol.appendChild(header)
 
+
+const News = async () => {
+  const response = await fetch('//localhost/arquivosphp/web_developing/backend/noticias/index.php');
+  const noticias = await response.json();
+
+  console.log(noticias)
+
+}
+
+header.addEventListener('click', News);
 }
 

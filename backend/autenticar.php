@@ -1,7 +1,7 @@
 <?php
 
     require_once dirname(__FILE__) . "/classDB.php";
-    require __DIR__ . '/vendor/autoload.php';
+    require '/vendor/autoload.php';
     require __DIR__ . "/key.php";
     use Firebase\JWT\JWT;
     use Firebase\JWT\Key;

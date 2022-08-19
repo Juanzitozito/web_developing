@@ -1,5 +1,6 @@
 <?php
 
-    $key = "fjhgilsuh343154"
+    $key = "fjhgilsuh343154";
+
 
 ?>

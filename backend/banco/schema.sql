@@ -32,7 +32,7 @@ CREATE TABLE noticia(
     descricao varchar(255) NOT NULL,
     conteudo varchar(1000) NOT NULL,
     dataPublicacao date NOT NULL,
-    /* idAutor int NOT NULL, */
-    PRIMARY KEY(id)/*,
-     FOREIGN KEY(idAutor) REFERENCES usuario(id) */
+    idAutor int NOT NULL,
+    PRIMARY KEY(id),
+    FOREIGN KEY(idAutor) REFERENCES usuario(id)
 );

@@ -3,6 +3,8 @@ require __DIR__ . '/vendor/autoload.php';
 require_once dirname(__FILE__) . "/classDB.php";
 require __DIR__ . '/interfaceCRUD.php';
 
+date_default_timezone_set('America/Sao_Paulo');
+
 class Noticia{
     private $id;
     private $titulo = '';
@@ -10,7 +12,7 @@ class Noticia{
     private $descricao = '';
     private $conteudo = '';
     private $idAutor = '';
-    private $dataPublicacao;
+    private $dataPublicacao = '';
     private $idUsuario;
 
     function __toString(){
@@ -34,6 +36,15 @@ class Noticia{
             return $consulta->fetch();
         }
 
+        static function findAll(){
+            $database = DB::getInstance();
+            $consulta = $database->prepare("SELECT * FROM noticia");
+            $consulta->execute();
+            $consulta->setFetchMode(PDO::FETCH_ASSOC);
+            $data = $consulta->fetchAll();
+            return $data;
+        }
+
         function setTitulo($valor){
             $this->titulo = $valor;
         }
@@ -42,12 +53,13 @@ class Noticia{
         }
         function setImagem($valor){
             $this->imagem = $valor;
+                 
         }
         function setConteudo($valor){
             $this->conteudo = $valor;
         }
         function setAutor($valor){
-            $this->dtnasc = $valor;
+            $this->idAutor = $valor;
         }
         function getTitulo(){
             return $this->titulo;
@@ -69,15 +81,14 @@ class Noticia{
         function inserir(){
             try{
                 $database = DB::getInstance();
-                $consulta = $database->prepare("INSERT INTO noticia(titulo, imagem, descricao , conteudo /*, idAutor, dataPublicacao, idUsuario */) VALUES (:titulo, :imagem, :descricao, :conteudo /*, :idAutor,  :dataPublicacao, :idUsuario */)");
+                $consulta = $database->prepare("INSERT INTO noticia(titulo, imagem, descricao , conteudo, idAutor, dataPublicacao) VALUES (:titulo, :imagem, :descricao, :conteudo , :idAutor,  :dataPublicacao)");
                 $consulta->execute([
                     ":titulo" => $this->titulo,
                     ":imagem" => $this->imagem,
                     ":descricao" => $this->descricao,
                     ":conteudo" => $this->conteudo,
-                    /* ":idAutor" => $this->idAutor,
-                    ":dataPublicacao" => $this->dataPublicacao,
-                    ":idUsuario" => $this->idUsuario  */
+                    ":idAutor" => $this->idAutor,
+                    ":dataPublicacao" => date('Y-m-d')
 
                 ]);
                 $consulta = $database->prepare("SELECT id FROM noticia ORDER BY id DESC LIMIT 1");
