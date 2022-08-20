@@ -4,6 +4,6 @@
 
     $o = new Noticia();
     $data = $o->findAll();
-    print 'a';
+    print json_encode($data);
 
 ?>

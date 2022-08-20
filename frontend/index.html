@@ -66,8 +66,7 @@
                   alt="news title"
                 />
               </div>
-              <div class="col-md-8">
-                <div class="card-body">
+              <div class="col-md-8 card-body">
                   <h5 class="card-title">Lorem Ipsum</h5>
                   <p class="card-text">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -77,7 +76,6 @@
                     Duis aute irure dolor in reprehenderit in voluptate velit
                     esse cillum dolore eu fugiat nulla pariatur.
                   </p>
-                </div>
               </div>
             </div>
           </div>
@@ -176,7 +174,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div>
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
               <!--formulario de noticia-->
               <div class="modal-body">
                 <input type="hidden" name="idUsuario" id="idUsuario"/>
@@ -191,7 +189,7 @@
                 </div>
                 <div class="mb-3">
                   <label for="imagem" class="form-label">imagem</label>
-                  <input type="file" class="form-control" name="imagem" id="imagem" placeholder="insira a imagem">
+                  <input type="file" class="form-control" name="imagem" id="imagem" accept="image/*" placeholder="insira a imagem">
                 </div>
                 <div class="mb-3">
                   <label for="conteudo" class="form-label">conteudo</label>

@@ -1,4 +1,5 @@
 <?php
+
 require __DIR__ . '/vendor/autoload.php';
 require_once dirname(__FILE__) . "/classDB.php";
 require __DIR__ . '/interfaceCRUD.php';
@@ -13,7 +14,6 @@ class Noticia{
     private $conteudo = '';
     private $idAutor = '';
     private $dataPublicacao = '';
-    private $idUsuario;
 
     function __toString(){
         return json_encode([
@@ -24,7 +24,6 @@ class Noticia{
             "conteudo" => $this->conteudo,
             "idAutor" => $this->idAutor,
             "dataPublicacao" => $this->dataPublicacao,
-            "idUsuario" => $this->idUsuario
         ]);
     }
 
@@ -41,8 +40,8 @@ class Noticia{
             $consulta = $database->prepare("SELECT * FROM noticia");
             $consulta->execute();
             $consulta->setFetchMode(PDO::FETCH_ASSOC);
-            $data = $consulta->fetchAll();
-            return $data;
+            $dados = $consulta->fetchAll();
+            return $dados;
         }
 
         function setTitulo($valor){
@@ -137,4 +136,4 @@ class Noticia{
 
 
 
-}
+

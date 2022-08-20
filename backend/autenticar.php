@@ -1,10 +1,9 @@
 <?php
 
     require_once dirname(__FILE__) . "/classDB.php";
-    require '/vendor/autoload.php';
+    require dirname(__FILE__) . '/vendor/autoload.php';
     require __DIR__ . "/key.php";
     use Firebase\JWT\JWT;
-    use Firebase\JWT\Key;
     $usuario = $_POST['email'];
     $senha = $_POST['senha'];
     $database = DB::getInstance();
@@ -19,8 +18,14 @@
             throw new Exception("Dados inválidos!");
         }
 
-        $jwt = JWT::encode($dados, $key, 'HS256');
-        print json_encode(['token' => "Bearer ${jwt}", 'usuario' => ['id' => $dados['id'], 'nick' => $dados['nick'], 'cargo' => $dados['cargo']]]);
+        $payload = [
+            'exp' => time() + 10,
+            'iat' => time(),
+            'dados' => $dados
+        ];
+
+        $jwt = JWT::encode($payload, $_ENV['KEY'], 'HS256');
+        print json_encode(['token' => "Bearer ${jwt}"]);
     } catch(Exception $e){
-        die(json_encode(['error' => $e->getMessage()]));
+        die(json_encode(['error' => $e->getMessage(), ]));
     }

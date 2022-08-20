@@ -11,14 +11,31 @@ modal_noticia = new bootstrap.Modal(document.getElementById('noticiaModal'))
 const btnInserir = document.getElementById('inserirNoticia')
 const navbar = document.getElementById('acoes')
   
+
+
   const token = localStorage.getItem('token')
-  const usuario = JSON.parse(localStorage.getItem('usuario'))
 
-  console.log(usuario)
-  console.log(token)
+//função decode token
+  function parseJwt (token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return decodedToken = JSON.parse(jsonPayload);
+};
+
+ if(token){
+parseJwt(token);
+
+console.log(decodedToken.dados)
+ } else {
+  console.log('vem nada boi')
+ }
 
 
-
+//botões que mudam de acordo com o estado de login do usuário
 const btnLogout = document.createElement('BUTTON')
   btnLogout.setAttribute('type', 'button')
   btnLogout.setAttribute('class', 'btn')
@@ -52,7 +69,7 @@ const btnLogout = document.createElement('BUTTON')
 
 
 btnInserir.addEventListener('click', async () => {
-  const idAutor = usuario.id
+  const idAutor = decodedToken.dados.id
   const titulo = document.getElementById('titulo').value
   const descricao = document.getElementById('descricao').value
   const imagem = document.getElementById('imagem').value
@@ -80,7 +97,7 @@ if(token){
   navbar.appendChild(btnPerfil)
   navbar.appendChild(btnLogout)
 
-}else{
+}else if(!token || token == null){
   navbar.appendChild(btnLogin)
 }
 
@@ -104,14 +121,61 @@ noticias.forEach(item => {
   mainNewsCol.appendChild(header)
 
 
-const News = async () => {
+const MainNews = async () => {
   const response = await fetch('//localhost/arquivosphp/web_developing/backend/noticias/index.php');
   const noticias = await response.json();
 
-  console.log(noticias)
+  noticias.forEach(not => {
+    
+  console.log(not)
 
+  const rowNot = document.createElement('div')
+  rowNot.setAttribute('class', 'row rowNot')
+  
+  const divItem = document.createElement('div')
+  divItem.setAttribute('class', 'card mb-4 not g')
+
+  const rowItem = document.createElement('div')
+  rowItem.setAttribute('class','row g-0')
+
+  const idNoticia = document.createElement('input')
+  idNoticia.setAttribute('type', 'hidden')
+  idNoticia.setAttribute('id', 'notID')
+  idNoticia.setAttribute('name', 'notID')
+  idNoticia.setAttribute('value', not.id)
+
+  const divImg = document.createElement('div')
+  divImg.setAttribute('class', 'col-md-4 img')
+
+  const image = document.createElement('img')
+  image.setAttribute('class', 'img-fluid rounded')
+  /* image.src = not.imagem */
+
+  const cardBody = document.createElement('div')
+  cardBody.setAttribute('class', 'col-md-8 card-body')
+
+  const newsHeader = document.createElement('h5')
+  newsHeader.setAttribute('class', 'card-title')
+  newsHeader.innerHTML = not.titulo
+
+  const newsText = document.createElement('p')
+  newsText.setAttribute('class', 'card-text')
+  newsText.innerHTML = not.descricao
+
+  mainNewsCol.appendChild(rowNot)
+  rowNot.appendChild(divItem)
+  divItem.appendChild(rowItem)
+  rowItem.appendChild(divImg)
+  rowItem.appendChild(cardBody)
+  rowItem.appendChild(idNoticia)
+  divImg.appendChild(image)
+  cardBody.appendChild(newsHeader)
+  cardBody.appendChild(newsText)
+
+  })
+  
 }
 
-header.addEventListener('click', News);
+  MainNews();
 }
 
