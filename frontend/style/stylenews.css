@@ -83,8 +83,18 @@ body{
     height: 25rem
 }
 
+#descricao{
+    height: 7rem;
+}
+
 .rowNot{
     margin-right: 2rem;
+}
+
+.imgNot{
+    
+     max-width: 10rem;
+
 }
 
 

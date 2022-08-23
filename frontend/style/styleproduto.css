@@ -56,8 +56,8 @@ body{
 .prod{
     background-color: lightgray;
     margin-top: 2rem;
-    margin-left: 25rem;
-    margin-right: 25rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
     box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
     border-radius: 15px;
 }
@@ -88,7 +88,7 @@ body{
 
 #prodRelacionados{
     margin-top: 2rem;
-    margin-left: 25rem;
-    margin-right: 25rem;
+    margin-left: 10rem;
+    margin-right: 10rem;
 }
 

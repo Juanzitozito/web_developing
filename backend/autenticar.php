@@ -2,7 +2,6 @@
 
     require_once dirname(__FILE__) . "/classDB.php";
     require dirname(__FILE__) . '/vendor/autoload.php';
-    require __DIR__ . "/key.php";
     use Firebase\JWT\JWT;
     $usuario = $_POST['email'];
     $senha = $_POST['senha'];
