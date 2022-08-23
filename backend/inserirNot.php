@@ -4,6 +4,7 @@ require "classNoticia.php";
 
 try {
 
+    if (isset($_FILES) || $_FILES != ""){
     $file = $_FILES['imagem'];
     $filename = $file['name'];
     $filetmpname = $file['tmp_name'];
@@ -24,6 +25,15 @@ try {
                 $filedestination = '../imagens/' . $filenamenew;
 
                 move_uploaded_file($filetmpname, $filedestination);
+
+                $not = new Noticia();
+    $not->setTitulo($_POST['titulo']);
+    $not->setDescricao($_POST['descricao']);
+    $not->setImagem($filedestination);
+    $not->setConteudo($_POST['conteudo']);
+    $not->setAutor($_POST['idAutor']);
+    $not->inserir();
+    print $not;
             } else {
                 echo "ocorreu um problema no tamanho";
             }
@@ -33,15 +43,9 @@ try {
     } else {
         echo "formato não permitido";
     }
+}
 
-    $not = new Noticia();
-    $not->setTitulo($_POST['titulo']);
-    $not->setDescricao($_POST['descricao']);
-    $not->setImagem($filedestination);
-    $not->setConteudo($_POST['conteudo']);
-    $not->setAutor($_POST['idAutor']);
-    $not->inserir();
-    print $not;
+    
 } catch (Exception $e) {
     print json_encode([
         "error" => true,

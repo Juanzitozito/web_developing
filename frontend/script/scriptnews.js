@@ -1,4 +1,5 @@
-const frontendUrl = "//localhost/arquivosphp/web_developing/frontend/";
+const frontendUrl = "//localhost/web_developing/frontend/";
+const backendUrl = "//localhost/web_developing/backend/"
 
 let modal_noticia = null;
 let btnInserir = null;
@@ -42,7 +43,6 @@ onload = async () => {
   btnLogout.innerHTML = "Logout";
   btnLogout.addEventListener("click", () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("usuario");
     location.reload();
   });
 
@@ -81,17 +81,13 @@ onload = async () => {
       body,
     });
 
-    location.window.reload()
+    const resposta = await response.json()
 
-    /* if(response)
+    console.log(resposta)
 
-  const file = document.getElementById('imagem').files
 
-  const bodyFile = new FormData()
+    window.location.reload()
 
-  bodyFile.append(file)
-
-  const responsefile =  */
   });
 
   if (token) {
@@ -116,9 +112,7 @@ noticias.forEach(item => {
   mainNewsCol.appendChild(header);
 
   const MainNews = async () => {
-    const response = await fetch(
-      "//localhost/arquivosphp/web_developing/backend/noticias/index.php"
-    );
+    const response = await fetch(backendUrl + "noticias/index.php");
     const noticias = await response.json();
 
     noticias.forEach((not) => {
@@ -138,6 +132,12 @@ noticias.forEach(item => {
       idNoticia.setAttribute("id", "notID");
       idNoticia.setAttribute("name", "notID");
       idNoticia.setAttribute("value", not.id);
+
+      const idAutorNot = document.createElement("input");
+      idAutorNot.setAttribute("type", "hidden");
+      idAutorNot.setAttribute("id", "autorid");
+      idAutorNot.setAttribute("name", "autorid");
+      idAutorNot.setAttribute("value", not.idAutor);
 
       const divImg = document.createElement("div");
       divImg.setAttribute("class", "col-md-4 img");
@@ -163,11 +163,19 @@ noticias.forEach(item => {
       rowItem.appendChild(divImg);
       rowItem.appendChild(cardBody);
       rowItem.appendChild(idNoticia);
+      rowItem.appendChild(idAutorNot);
       divImg.appendChild(image);
       cardBody.appendChild(newsHeader);
       cardBody.appendChild(newsText);
+
     });
+
+    if(response.error){
+      alert('ocorreu um erro ao carregar as notícias, por favo, recarregue o site o informe-nos o erro')
+    }
   };
+
+  const LatestNews = () => {}
 
   MainNews();
 };
