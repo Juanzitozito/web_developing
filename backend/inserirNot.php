@@ -4,7 +4,7 @@ require "classNoticia.php";
 
 try {
 
-    if (isset($_FILES) || $_FILES != ""){
+    
     $file = $_FILES['imagem'];
     $filename = $file['name'];
     $filetmpname = $file['tmp_name'];
@@ -26,7 +26,7 @@ try {
 
                 move_uploaded_file($filetmpname, $filedestination);
 
-                $not = new Noticia();
+    $not = new Noticia();
     $not->setTitulo($_POST['titulo']);
     $not->setDescricao($_POST['descricao']);
     $not->setImagem($filedestination);
@@ -35,14 +35,14 @@ try {
     $not->inserir();
     print $not;
             } else {
-                echo "ocorreu um problema no tamanho";
+                throw new Exception("ocorreu um problema no tamanho");
             }
         } else {
-            echo "ocorreu um problema no arquivo";
+            throw new Exception("ocorreu um problema no arquivo");
         }
     } else {
-        echo "formato não permitido";
-    }
+        throw new Exception("formato errado");
+
 }
 
     

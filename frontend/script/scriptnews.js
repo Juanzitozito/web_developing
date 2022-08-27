@@ -1,5 +1,5 @@
-const frontendUrl = "//localhost/web_developing/frontend/";
-const backendUrl = "//localhost/web_developing/backend/"
+const frontendUrl = "//localhost/arquivosphp/web_developing/frontend/";
+const backendUrl = "//localhost/arquivosphp/web_developing/backend/"
 
 let modal_noticia = null;
 let btnInserir = null;
@@ -7,6 +7,9 @@ let btnLogout = null;
 let btnPerfil = null;
 
 onload = async () => {
+
+  
+
   modal_noticia = new bootstrap.Modal(document.getElementById("noticiaModal"));
   const btnInserir = document.getElementById("inserirNoticia");
   const navbar = document.getElementById("acoes");
@@ -76,14 +79,14 @@ onload = async () => {
     body.append("imagem", imagem);
     body.append("conteudo", conteudo);
 
-    const response = await fetch(`../../backend/inserirNot.php`, {
+    const response = await fetch(`../backend/inserirNot.php`, {
       method: "POST",
       body,
     });
 
     const resposta = await response.json()
 
-    console.log(resposta)
+  
 
 
     window.location.reload()
@@ -97,7 +100,7 @@ onload = async () => {
     navbar.appendChild(btnLogin);
   }
 
-  /* const noticias = document.querySelectorAll('.not')
+  /* 
 
 noticias.forEach(item => {
       item.addEventListener('click', () => {
@@ -111,10 +114,12 @@ noticias.forEach(item => {
   header.innerHTML = "Principais Notícias";
   mainNewsCol.appendChild(header);
 
-  const MainNews = async () => {
-    const response = await fetch(backendUrl + "noticias/index.php");
-    const noticias = await response.json();
+  
 
+  const MainNews = async () => {
+  const response = await fetch(backendUrl + "noticias/index.php");
+  const noticias = await response.json();
+    
     noticias.forEach((not) => {
       console.log(not);
 
@@ -127,16 +132,10 @@ noticias.forEach(item => {
       const rowItem = document.createElement("div");
       rowItem.setAttribute("class", "row g-0");
 
-      const idNoticia = document.createElement("input");
-      idNoticia.setAttribute("type", "hidden");
-      idNoticia.setAttribute("id", "notID");
-      idNoticia.setAttribute("name", "notID");
-      idNoticia.setAttribute("value", not.id);
-
       const idAutorNot = document.createElement("input");
       idAutorNot.setAttribute("type", "hidden");
-      idAutorNot.setAttribute("id", "autorid");
       idAutorNot.setAttribute("name", "autorid");
+      idAutorNot.setAttribute("class", 'idnot')
       idAutorNot.setAttribute("value", not.idAutor);
 
       const divImg = document.createElement("div");
@@ -144,7 +143,12 @@ noticias.forEach(item => {
 
       const image = document.createElement("img");
       image.setAttribute("class", "img-fluid rounded imgNot");
-      image.src = "../" + not.imagem;
+      image.src = not.imagem;
+
+      const botaoIr = document.createElement('button')
+      botaoIr.setAttribute('class', 'btn ir')
+      botaoIr.setAttribute('value', not.id) 
+      botaoIr.innerHTML = 'ir'
 
       const cardBody = document.createElement("div");
       cardBody.setAttribute("class", "col-md-8 card-body");
@@ -162,7 +166,7 @@ noticias.forEach(item => {
       divItem.appendChild(rowItem);
       rowItem.appendChild(divImg);
       rowItem.appendChild(cardBody);
-      rowItem.appendChild(idNoticia);
+      rowItem.appendChild(botaoIr);
       rowItem.appendChild(idAutorNot);
       divImg.appendChild(image);
       cardBody.appendChild(newsHeader);
@@ -170,12 +174,29 @@ noticias.forEach(item => {
 
     });
 
-    if(response.error){
-      alert('ocorreu um erro ao carregar as notícias, por favo, recarregue o site o informe-nos o erro')
-    }
   };
 
-  const LatestNews = () => {}
 
-  MainNews();
+   await MainNews()
+    
+    const botoes = document.querySelectorAll('.ir')
+
+    botoes.forEach(bt => {
+      console.log(bt.value)
+
+      bt.addEventListener('click', async () => {
+        const body = new FormData()
+        body.append('id', bt.value)
+
+        await fetch(backendUrl + 'noticias/noticia.php', {
+          method: "POST",
+          body
+        })
+      })
+    });  
+
+  
+
+
+  
 };

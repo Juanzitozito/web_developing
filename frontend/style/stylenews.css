@@ -93,15 +93,8 @@ body{
 
 .imgNot{
 width: auto;
+max-height: 12rem;
 
-}
-
-.btnexclusao{
-float: right;
-font-size: 15px;
-max-width: min-content;
-
-    
 }
 
 
