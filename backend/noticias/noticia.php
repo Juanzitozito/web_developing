@@ -1,12 +1,13 @@
 <?php
 
-require "classNoticia.php";
+require "../classNoticia.php";
 
 try{
     $not = new Noticia();
-    $not->findbyPk($_POST['id']);
-    print json_encode($not);
-    
+    $id = $_POST['id'];
+    $data = $not->findbyPk($id);
+    json_encode($data);
+    print $data;
 
 }catch(Exception $e){
 

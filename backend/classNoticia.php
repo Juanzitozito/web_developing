@@ -27,7 +27,7 @@ class Noticia{
         ]);
     }
 
-        static function findbyPk ($id){
+        static function findbyPk($id){
             $database = DB::getInstance();
             $consulta = $database->prepare("SELECT * FROM noticia WHERE id=:id");
             $consulta->execute([":id" => $id]);

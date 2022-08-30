@@ -119,9 +119,12 @@ noticias.forEach(item => {
   const MainNews = async () => {
   const response = await fetch(backendUrl + "noticias/index.php");
   const noticias = await response.json();
+  console.log(noticias)
     
+  if(noticias != ''){
     noticias.forEach((not) => {
       console.log(not);
+      
 
       const rowNot = document.createElement("div");
       rowNot.setAttribute("class", "row rowNot");
@@ -150,6 +153,8 @@ noticias.forEach(item => {
       botaoIr.setAttribute('value', not.id) 
       botaoIr.innerHTML = 'ir'
 
+      const hr = document.createElement('hr')
+
       const cardBody = document.createElement("div");
       cardBody.setAttribute("class", "col-md-8 card-body");
 
@@ -166,16 +171,21 @@ noticias.forEach(item => {
       divItem.appendChild(rowItem);
       rowItem.appendChild(divImg);
       rowItem.appendChild(cardBody);
+      rowItem.appendChild(hr)
       rowItem.appendChild(botaoIr);
       rowItem.appendChild(idAutorNot);
       divImg.appendChild(image);
       cardBody.appendChild(newsHeader);
       cardBody.appendChild(newsText);
-
+      
     });
-
+  }else{
+       const span = document.createElement('span')
+       span.innerHTML = 'não há notícias'
+       mainNewsCol.appendChild(span)
+  }
+  
   };
-
 
    await MainNews()
     
@@ -185,13 +195,11 @@ noticias.forEach(item => {
       console.log(bt.value)
 
       bt.addEventListener('click', async () => {
-        const body = new FormData()
-        body.append('id', bt.value)
+        const para = new URLSearchParams()
 
-        await fetch(backendUrl + 'noticias/noticia.php', {
-          method: "POST",
-          body
-        })
+        para.append('id', bt.value)
+
+        location.href = "//localhost/arquivosphp/web_developing/frontend/noticia.html?" + para.toString()
       })
     });  
 

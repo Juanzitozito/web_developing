@@ -1,10 +1,17 @@
 const frontendUrl = '//localhost/arquivosphp/web_developing/frontend/'
+const backendUrl = "//localhost/arquivosphp/web_developing/backend/"
 
 let btnInserir = null
 let btnLogout = null
 let btnPerfil = null
 
 onload = async () => {
+
+  const para = new URLSearchParams(window.location.search)
+
+  const pass = para.get('id')
+
+  console.log(pass)
 
 const btnInserir = document.getElementById('inserirNoticia')
 const navbar = document.getElementById('acoes')
@@ -20,7 +27,6 @@ const btnLogout = document.createElement('BUTTON')
  
   btnLogout.addEventListener('click', () => {
     localStorage.removeItem('token')
-    localStorage.removeItem('usuario')
     location.reload();
   });
 
@@ -49,11 +55,14 @@ if(token){
   navbar.appendChild(btnLogin)
 }
 
+const body = new FormData()
+body.append('id', pass)
 
+   const response = await fetch(backendUrl + "noticias/noticia.php", {method: 'POST', body});
 
-document.querySelectorAll('.not').forEach(item => {
-      item.addEventListener('click', () => {
-        location.replace('noticia.html')
-      })
-    })
+   const noticia = await response.json()
+
+   console.log(noticia)
+
+   
 }
