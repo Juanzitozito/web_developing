@@ -14,6 +14,7 @@ class Noticia{
     private $conteudo = '';
     private $idAutor = '';
     private $dataPublicacao = '';
+    private $autor;
 
     function __toString(){
         return json_encode([
@@ -24,12 +25,13 @@ class Noticia{
             "conteudo" => $this->conteudo,
             "idAutor" => $this->idAutor,
             "dataPublicacao" => $this->dataPublicacao,
+            'autor' => $this->autor
         ]);
     }
 
         static function findbyPk($id){
             $database = DB::getInstance();
-            $consulta = $database->prepare("SELECT * FROM noticia WHERE id=:id");
+            $consulta = $database->prepare("SELECT n.id, n.titulo, n.descricao, n.imagem, n.conteudo, n.idAutor, n.dataPublicacao, u.nick as autor FROM noticia n INNER JOIN usuario u ON n.idAutor = u.id WHERE n.id=:id");
             $consulta->execute([":id" => $id]);
             $consulta->setFetchMode(PDO::FETCH_CLASS, "Noticia");
             return $consulta->fetch();

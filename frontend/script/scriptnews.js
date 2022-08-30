@@ -1,5 +1,5 @@
-const frontendUrl = "//localhost/arquivosphp/web_developing/frontend/";
-const backendUrl = "//localhost/arquivosphp/web_developing/backend/"
+const frontendUrl = "//localhost/web_developing/frontend/";
+const backendUrl = "//localhost/web_developing/backend/";
 
 let modal_noticia = null;
 let btnInserir = null;
@@ -7,9 +7,6 @@ let btnLogout = null;
 let btnPerfil = null;
 
 onload = async () => {
-
-  
-
   modal_noticia = new bootstrap.Modal(document.getElementById("noticiaModal"));
   const btnInserir = document.getElementById("inserirNoticia");
   const navbar = document.getElementById("acoes");
@@ -84,13 +81,13 @@ onload = async () => {
       body,
     });
 
-    const resposta = await response.json()
+    const resposta = await response.json();
 
-  
+    if (resposta.error) {
+      alert(resposta.message);
+    }
 
-
-    window.location.reload()
-
+     window.location.reload();
   });
 
   if (token) {
@@ -114,97 +111,88 @@ noticias.forEach(item => {
   header.innerHTML = "Principais Notícias";
   mainNewsCol.appendChild(header);
 
-  
-
   const MainNews = async () => {
-  const response = await fetch(backendUrl + "noticias/index.php");
-  const noticias = await response.json();
-  console.log(noticias)
-    
-  if(noticias != ''){
-    noticias.forEach((not) => {
-      console.log(not);
-      
+    const response = await fetch(backendUrl + "noticias/index.php");
+    const noticias = await response.json();
+    console.log(noticias);
 
-      const rowNot = document.createElement("div");
-      rowNot.setAttribute("class", "row rowNot");
+    if (noticias != "") {
+      noticias.forEach((not) => {
+        console.log(not);
 
-      const divItem = document.createElement("div");
-      divItem.setAttribute("class", "card mb-4 not g");
+        const rowNot = document.createElement("div");
+        rowNot.setAttribute("class", "row rowNot");
 
-      const rowItem = document.createElement("div");
-      rowItem.setAttribute("class", "row g-0");
+        const divItem = document.createElement("div");
+        divItem.setAttribute("class", "card mb-4 not g");
 
-      const idAutorNot = document.createElement("input");
-      idAutorNot.setAttribute("type", "hidden");
-      idAutorNot.setAttribute("name", "autorid");
-      idAutorNot.setAttribute("class", 'idnot')
-      idAutorNot.setAttribute("value", not.idAutor);
+        const rowItem = document.createElement("div");
+        rowItem.setAttribute("class", "row g-0");
 
-      const divImg = document.createElement("div");
-      divImg.setAttribute("class", "col-md-4 img");
+        const idAutorNot = document.createElement("input");
+        idAutorNot.setAttribute("type", "hidden");
+        idAutorNot.setAttribute("name", "autorid");
+        idAutorNot.setAttribute("class", "idnot");
+        idAutorNot.setAttribute("value", not.idAutor);
 
-      const image = document.createElement("img");
-      image.setAttribute("class", "img-fluid rounded imgNot");
-      image.src = not.imagem;
+        const divImg = document.createElement("div");
+        divImg.setAttribute("class", "col-md-4 img");
 
-      const botaoIr = document.createElement('button')
-      botaoIr.setAttribute('class', 'btn ir')
-      botaoIr.setAttribute('value', not.id) 
-      botaoIr.innerHTML = 'ir'
+        const image = document.createElement("img");
+        image.setAttribute("class", "img-fluid rounded imgNot");
+        image.src = not.imagem;
 
-      const hr = document.createElement('hr')
+        const botaoIr = document.createElement("button");
+        botaoIr.setAttribute("class", "btn ir");
+        botaoIr.setAttribute("value", not.id);
+        botaoIr.innerHTML = "clique para ir para a notícia";
 
-      const cardBody = document.createElement("div");
-      cardBody.setAttribute("class", "col-md-8 card-body");
+        const hr = document.createElement("hr");
 
-      const newsHeader = document.createElement("h5");
-      newsHeader.setAttribute("class", "card-title");
-      newsHeader.innerHTML = not.titulo;
+        const cardBody = document.createElement("div");
+        cardBody.setAttribute("class", "col-md-8 card-body");
 
-      const newsText = document.createElement("p");
-      newsText.setAttribute("class", "card-text");
-      newsText.innerHTML = not.descricao;
+        const newsHeader = document.createElement("h5");
+        newsHeader.setAttribute("class", "card-title");
+        newsHeader.innerHTML = not.titulo;
 
-      mainNewsCol.appendChild(rowNot);
-      rowNot.appendChild(divItem);
-      divItem.appendChild(rowItem);
-      rowItem.appendChild(divImg);
-      rowItem.appendChild(cardBody);
-      rowItem.appendChild(hr)
-      rowItem.appendChild(botaoIr);
-      rowItem.appendChild(idAutorNot);
-      divImg.appendChild(image);
-      cardBody.appendChild(newsHeader);
-      cardBody.appendChild(newsText);
-      
-    });
-  }else{
-       const span = document.createElement('span')
-       span.innerHTML = 'não há notícias'
-       mainNewsCol.appendChild(span)
-  }
-  
+        const newsText = document.createElement("p");
+        newsText.setAttribute("class", "card-text");
+        newsText.innerHTML = not.descricao;
+
+        mainNewsCol.appendChild(rowNot);
+        rowNot.appendChild(divItem);
+        divItem.appendChild(rowItem);
+        rowItem.appendChild(divImg);
+        rowItem.appendChild(cardBody);
+        rowItem.appendChild(hr);
+        rowItem.appendChild(botaoIr);
+        rowItem.appendChild(idAutorNot);
+        divImg.appendChild(image);
+        cardBody.appendChild(newsHeader);
+        cardBody.appendChild(newsText);
+      });
+    } else {
+      const span = document.createElement("span");
+      span.innerHTML = "não há notícias";
+      mainNewsCol.appendChild(span);
+    }
   };
 
-   await MainNews()
-    
-    const botoes = document.querySelectorAll('.ir')
+  await MainNews();
 
-    botoes.forEach(bt => {
-      console.log(bt.value)
+  const botoes = document.querySelectorAll(".ir");
 
-      bt.addEventListener('click', async () => {
-        const para = new URLSearchParams()
+  botoes.forEach((bt) => {
+    console.log(bt.value);
 
-        para.append('id', bt.value)
+    bt.addEventListener("click", async () => {
+      const para = new URLSearchParams();
 
-        location.href = "//localhost/arquivosphp/web_developing/frontend/noticia.html?" + para.toString()
-      })
-    });  
+      para.append("id", bt.value);
 
-  
-
-
-  
+      location.href =
+        "//localhost/web_developing/frontend/noticia.html?" + para.toString();
+    });
+  });
 };
