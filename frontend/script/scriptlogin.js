@@ -1,4 +1,4 @@
-const frontendUrl = "//localhost/web_developing/frontend/";
+const frontendUrl = "//localhost/arquivosphp/web_developing/frontend/";
 
 let btnLogar = null;
 

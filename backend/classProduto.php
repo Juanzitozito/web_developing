@@ -8,8 +8,10 @@ require __DIR__ . '/interfaceCRUD.php';
         private $id;
         private $nome = "";
         private $preco = "";
+        private $imagem = "";
         private $descricao = "";
         private $siteProduto = "";
+        private $especificacoes = "";
         private $tipo = "";
 
         function __toString(){
@@ -19,7 +21,9 @@ require __DIR__ . '/interfaceCRUD.php';
                 "preco" => $this->preco,
                 "descricao" => $this->descricao,
                 "siteProduto" => $this->siteProduto,
-                "tipo" => $this->tipo
+                "tipo" => $this->tipo,
+                'imagem' => $this->imagem,
+                'especificacoes' => $this->especificacoes
             ]);
         }
 
@@ -37,8 +41,14 @@ require __DIR__ . '/interfaceCRUD.php';
         function setpreco($valor){
             $this->preco = $valor;
         }
+        function setImagem($valor){
+            $this->imagem = $valor;
+        }
         function setDescricao($valor){
             $this->descricao = $valor;
+        }
+        function setEspecificacoes($valor){
+            $this->especificacoes = $valor;
         }
         function setSiteProduto($valor){
             $this->siteProduto = $valor;
@@ -49,8 +59,14 @@ require __DIR__ . '/interfaceCRUD.php';
         function getNome(){
             return $this->nome;
         }
+        function getEspecificacoes(){
+            return $this->especificacoes;
+        }
         function getpreco(){
-            return $this->email;
+            return $this->preco;
+        }
+        function getImagem(){
+            return $this->imagem;
         }
         function getDescricao(){
             return $this->senha;
@@ -65,13 +81,15 @@ require __DIR__ . '/interfaceCRUD.php';
         function inserir(){
             try{
                 $database = DB::getInstance();
-                $consulta = $database->prepare("INSERT INTO produto(nome, preco, descricao, siteProduto, tipo) VALUES (:nome, :preco, :descricao, :siteProduto, :tipo)");
+                $consulta = $database->prepare("INSERT INTO produto(nome, preco, descricao, siteProduto, tipo, imagem, especificacoes) VALUES (:nome, :preco, :descricao, :siteProduto, :tipo, :imagem, :especificacoes)");
                 $consulta->execute([
                     ":nome" => $this->nome,
                     ":preco" => $this->preco,
                     ":descricao" => $this->descricao,
                     ":siteProduto" => $this->siteProduto,
-                    ":tipo" => $this->tipo
+                    ":tipo" => $this->tipo,
+                    ":imagem" => $this->imagem,
+                    ":especificacoes" => $this->especificacoes
 
                 ]);
                 $consulta = $database->prepare("SELECT id FROM produto ORDER BY id DESC LIMIT 1");
@@ -87,14 +105,16 @@ require __DIR__ . '/interfaceCRUD.php';
         function alterar(){
             try{
                 $database = DB::getInstance();
-                $consulta = $database->prepare("UPDATE produto SET nome = :nome, preco = :preco, descricao = :descricao, siteProduto = :siteProduto, tipo = :tipo WHERE id = :id");
+                $consulta = $database->prepare("UPDATE produto SET nome = :nome, preco = :preco, descricao = :descricao, siteProduto = :siteProduto, tipo = :tipo, imagem = :imagem, especificacoes = :especificacoes WHERE id = :id");
                 $consulta->execute([
                     ":id" => $this->id,
                     ":nome" => $this->nome,
                     ":preco" => $this->preco,
                     ":descricao" => $this->descricao,
                     ":siteProduto" => $this->siteProduto,
-                    ":tipo" => $this->tipo
+                    ":tipo" => $this->tipo,
+                    ":imagem" => $this->imagem,
+                    ":especificacoes" => $this->especificacoes
                 ]);
             }
             catch(PDOException $e){

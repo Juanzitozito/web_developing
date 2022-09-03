@@ -29,6 +29,11 @@ body{
     padding: 2px
 }
 
+.nav-link:hover{
+    padding: 5px;
+    transition: padding 0.15s linear;
+}
+
 
 #noticia{
     height: auto;

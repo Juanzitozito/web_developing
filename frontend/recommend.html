@@ -47,7 +47,10 @@
                             <label for="horns">Dois</label>
                         </div>
                 </form>
-                <button id="rec">Recomendações</button>
+                <button class="btn rec">Recomendações</button>
+                <button id="btnProduto" class="btn rec" data-bs-toggle="modal" data-bs-target="#produtoModal">
+                    <img src="../componentesimg/btn.png" id="add">ADICIONAR
+                  </button>
             </div>
         </div>
         <div class="container-fluid" id="itens">
@@ -128,6 +131,53 @@
             </div>
         </div>
         </div>
+
+        <div class="modal fade" id="produtoModal" tabindex="-1" aria-labelledby="produtoModalLabel" aria-hidden="true">
+            <!--Div do formulário de noticia-->
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="noticiaModalLabel">Inserir noticia</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div>
+                  <form method="POST" enctype="multipart/form-data">
+                    <!--formulario de noticia-->
+                    <div class="modal-body">
+                      <div class="mb-3">
+                        <label for="nome" class="form-label">Nome</label>
+                        <input type="text" class="form-control" name="nome" id="nome" placeholder="insira o nome">
+                      </div>
+                      <div class="mb-3">
+                        <label for="preco" class="form-label">preço em reais</label>
+                        <input type="number" class="form-control" name="preco" id="preco" placeholder="insira o preço em reais"></input>
+                      </div>
+                      <div class="mb-3">
+                        <label for="imagem" class="form-label">Imagem</label>
+                        <input type="file" class="form-control" name="imagem" id="imagem" placeholder="insira a imagem">
+                      </div>
+                      <div class="mb-3">
+                        <label for="siteProduto" class="form-label">Site do produto</label>
+                        <input type="text" class="form-control" name="siteProduto" id="siteProduto" placeholder="insira o site do produto" required></input>
+                      </div>
+                      <div class="mb-3">
+                        <label for="descricao" class="form-label">Descrição do Produto</label>
+                        <textarea class="form-control" name="descricao" id="descricao" placeholder="insira a descricao" required></textarea>
+                      </div>
+                      <div class="mb-3">
+                        <label for="especificacoes" class="form-label">Especificações do produto</label>
+                        <textarea class="form-control" name="especificacoes" id="especificacoes" placeholder="insira a descricao" required></textarea>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                      <button id="alterarNoticia" type="button" class="btn btn-info">Alterar</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
     </main>
 
 

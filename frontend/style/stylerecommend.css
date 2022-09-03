@@ -62,18 +62,23 @@ img {
     color: grey;
     transition: color 0.1s linear;
 }
-#rec{
+.rec{
     font-size: 25px;
     background-color: #0d6efd;
     color: aliceblue;
     border-radius: 15px;
-    padding: 15px;
+    padding: 10px;
     margin-top: 6rem;
 }
-#rec:hover{
+.rec:hover{
     outline: solid 1px black;
     outline-width: 5px;
     transition: outline 0.1s linear;
+}
+
+#add{
+    margin-right: 5px;
+    width: 4rem;
 }
 
 .price{
