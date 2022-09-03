@@ -46,6 +46,11 @@ img {
     padding: 2px
 }
 
+.nav-link:hover{
+    padding: 5px;
+    transition: padding 0.15s linear;
+}
+
 .btn{
     margin-right: 20px;
     background-color: black;

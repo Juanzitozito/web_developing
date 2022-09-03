@@ -82,6 +82,8 @@ body{
 
 #imagemNoticia{
     border: 2px black solid;
+    max-height: 25rem;
+
 }
 
 .card {
@@ -133,6 +135,15 @@ p{
 
 label{
     color: black;
+}
+
+.not{
+    width: 15rem;
+}
+
+.card-img-top{
+    max-width: 12rem;
+    align-self: center;
 }
 
 

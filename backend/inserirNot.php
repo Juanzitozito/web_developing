@@ -3,7 +3,9 @@
 require "classNoticia.php";
 
 try {
-
+    if(!isset($_FILES['imagem'])){
+        throw new Exception('Arquivo é obrigatório');
+    }
     
     $file = $_FILES['imagem'];
     $filename = $file['name'];

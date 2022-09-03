@@ -188,5 +188,87 @@ onload = async () => {
     }
   };
 
+  const mainNewsCol = document.getElementById("latest");
+  const header = document.createElement("h1");
+  header.setAttribute("class", "header");
+  header.innerHTML = "Ultimas Notícias";
+  mainNewsCol.appendChild(header);
+
+  const LatestNews = async () => {
+    const response = await fetch(backendUrl + "noticias/index.php");
+    const noticias = await response.json();
+    console.log(noticias);
+
+    if (noticias != "") {
+      noticias.forEach((not) => {
+        console.log(not);
+         
+         if(not.id != noticia.id){ 
+           //divcard
+
+           //img
+
+           //divbody
+           // -> title
+           // -> text
+
+           const divCard = document.createElement('DIV')
+           divCard.setAttribute('class', 'card not')
+           
+           const imgCard = document.createElement('img')
+           imgCard.setAttribute('class', 'card-img-top')
+           imgCard.src = not.imagem
+
+           const divBody = document.createElement('div')
+           divBody.setAttribute('class', 'card-body')
+
+           const cardTitle = document.createElement('header')
+           cardTitle.setAttribute('class', 'card-title')
+           cardTitle.innerHTML = not.titulo
+
+           const cardText = document.createElement('p')
+           cardText.setAttribute('class', 'card-text')
+           cardText.innerHTML = not.descricao
+
+           const botaoIr = document.createElement('button')
+           botaoIr.setAttribute('class', 'btn ir')
+           botaoIr.setAttribute("value", not.id);
+           botaoIr.innerHTML = "ver notícia";
+
+
+           mainNewsCol.appendChild(divCard)
+           divCard.appendChild(imgCard)
+           divCard.appendChild(divBody)
+           divCard.appendChild(botaoIr)
+           divBody.appendChild(cardTitle)
+           divBody.appendChild(cardText)
+
+         }
+        
+      });
+    } else {
+      const span = document.createElement("span");
+      span.innerHTML = "não há notícias";
+      mainNewsCol.appendChild(span);
+    }
+  };
+
   MostraNoticia();
+
+  await LatestNews();
+
+  const botoes = document.querySelectorAll(".ir");
+
+  botoes.forEach((bt) => {
+    console.log(bt.value);
+
+    bt.addEventListener("click", async () => {
+      const para = new URLSearchParams();
+
+      para.append("id", bt.value);
+
+      location.href =
+        "//localhost/arquivosphp/web_developing/frontend/noticia.html?" + para.toString();
+    });
+  });
 };

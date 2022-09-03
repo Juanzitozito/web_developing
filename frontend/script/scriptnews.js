@@ -97,13 +97,6 @@ onload = async () => {
     navbar.appendChild(btnLogin);
   }
 
-  /* 
-
-noticias.forEach(item => {
-      item.addEventListener('click', () => {
-         location.replace('noticia.html') 
-      })
-    }) */
 
   const mainNewsCol = document.getElementById("mainNewsCol");
   const header = document.createElement("h1");

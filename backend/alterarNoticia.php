@@ -2,11 +2,21 @@
 require "classNoticia.php";
 
 try {
+
     if(!isset($_FILES['imagem'])){
         throw new Exception('Arquivo é obrigatório');
     }
 
     $id = $_POST['id'];
+
+
+
+    $noticia = Noticia::findbyPk($id);
+    $imgAntiga = $noticia->getImagem();
+
+    if(isset($imgAntiga)){
+    unlink($imgAntiga);
+    }
 
     $file = $_FILES['imagem'];
     $filename = $file['name'];
@@ -49,6 +59,7 @@ try {
         throw new Exception("formato errado");
 
 }
+    
     
 
 }catch(Exception $e){

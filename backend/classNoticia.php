@@ -39,7 +39,7 @@ class Noticia{
 
         static function findAll(){
             $database = DB::getInstance();
-            $consulta = $database->prepare("SELECT * FROM noticia");
+            $consulta = $database->prepare("SELECT * FROM noticia LIMIT 20");
             $consulta->execute();
             $consulta->setFetchMode(PDO::FETCH_ASSOC);
             $dados = $consulta->fetchAll();
