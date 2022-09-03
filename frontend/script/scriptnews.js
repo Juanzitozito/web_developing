@@ -1,5 +1,5 @@
-const frontendUrl = "//localhost/web_developing/frontend/";
-const backendUrl = "//localhost/web_developing/backend/";
+const frontendUrl = "//localhost/arquivosphp/web_developing/frontend/";
+const backendUrl = "//localhost/arquivosphp/web_developing/backend/";
 
 let modal_noticia = null;
 let btnInserir = null;
@@ -192,7 +192,7 @@ noticias.forEach(item => {
       para.append("id", bt.value);
 
       location.href =
-        "//localhost/web_developing/frontend/noticia.html?" + para.toString();
+        "//localhost/arquivosphp/web_developing/frontend/noticia.html?" + para.toString();
     });
   });
 };

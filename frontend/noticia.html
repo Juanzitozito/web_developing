@@ -93,6 +93,47 @@
       </div>
     </div>
 
+    <div class="modal fade" id="noticiaModal" tabindex="-1" aria-labelledby="noticiaModalLabel" aria-hidden="true">
+      <!--Div do formulário de noticia-->
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="noticiaModalLabel">Inserir noticia</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div>
+            <form method="POST" enctype="multipart/form-data">
+              <!--formulario de noticia-->
+              <div class="modal-body">
+                <input type="hidden" name="idUsuario" id="idUsuario"/>
+                <input type="hidden" name="idNoticia" id="idNoticia"/>
+                <div class="mb-3">
+                  <label for="tituloForm" class="form-label">titulo</label>
+                  <input type="text" class="form-control" name="titulo" id="tituloForm" placeholder="insira o titulo">
+                </div>
+                <div class="mb-3">
+                  <label for="descricaoForm" class="form-label">descricao</label>
+                  <textarea  class="form-control" name="descricao" id="descricaoForm" placeholder="insira a descricao"></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="imagemForm" class="form-label">imagem</label>
+                  <input type="file" class="form-control" name="imagem" id="imagemForm" placeholder="insira a imagem">
+                </div>
+                <div class="mb-3">
+                  <label for="conteudoForm" class="form-label">conteudo</label>
+                  <textarea class="form-control" name="conteudo" id="conteudoForm" placeholder="insira o conteudo" required></textarea>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                <button id="alterarNoticia" type="button" class="btn btn-info">Alterar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

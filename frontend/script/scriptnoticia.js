@@ -1,12 +1,14 @@
-const frontendUrl = "//localhost/web_developing/frontend/";
-const backendUrl = "//localhost/web_developing/backend/";
+const frontendUrl = "//localhost/arquivosphp/web_developing/frontend/";
+const backendUrl = "//localhost/arquivosphp/web_developing/backend/";
 
 let btnInserir = null;
 let btnLogout = null;
 let btnPerfil = null;
+let modal_noticia = null;
 
 onload = async () => {
   const para = new URLSearchParams(window.location.search);
+  modal_noticia = new bootstrap.Modal(document.getElementById("noticiaModal"));
 
   const pass = para.get("id");
 
@@ -112,17 +114,63 @@ onload = async () => {
     const botaoExcluir = document.createElement("button");
     botaoExcluir.setAttribute("class", "btn btn-danger");
     botaoExcluir.innerHTML = "excluir";
-    botaoExcluir.addEventListener('click', async () => {
-      const body = new FormData()
-      body.append(noticia.id)
+    botaoExcluir.addEventListener("click", async () => {
+      const body = new FormData();
+      body.append("id", noticia.id);
 
-      const response = await fetch(`${backendUrl}removerNoticia.php`, {method: 'POST', body})
+      const response = await fetch(`${backendUrl}removerNoticia.php`, {
+        method: "POST",
+        body,
+      });
 
-    })
+      console.log(response);
+
+      if (response.status === 200) {
+        location.href = "index.html";
+      }
+    });
+
+    document.getElementById("tituloForm").value = noticia.titulo;
+    document.getElementById("descricaoForm").value = noticia.descricao;
+    document.getElementById("imagemForm").filename = noticia.imagem;
+    document.getElementById("conteudoForm").value = noticia.conteudo;
 
     const botaoAlterar = document.createElement("button");
     botaoAlterar.setAttribute("class", "btn btn-info");
     botaoAlterar.innerHTML = "alterar";
+    botaoAlterar.setAttribute("data-bs-toggle", "modal");
+    botaoAlterar.setAttribute("data-bs-target", "#noticiaModal");
+
+    const botaoAlteraNot = document.getElementById('alterarNoticia')
+
+    botaoAlteraNot.addEventListener('click', async () => {
+    const idAutorForm = decodedToken.dados.id;
+    const tituloForm = document.getElementById("tituloForm").value;
+    const descricaoForm = document.getElementById("descricaoForm").value;
+    const imagemForm = document.getElementById("imagemForm").files[0];
+    const conteudoForm = document.getElementById("conteudoForm").value;
+
+    const body = new FormData();
+    body.append("titulo", tituloForm);
+    body.append("descricao", descricaoForm);
+    body.append("imagem", imagemForm);
+    body.append("conteudo", conteudoForm);
+    body.append('id', noticia.id)
+    
+      const response = await fetch(`${backendUrl}alterarNoticia.php`, {method: 'POST', body})
+
+      const status = await response.json()
+      
+      if(status.error){
+        alert(status.message)
+      
+      }
+
+       window.location.reload() 
+      
+    })
+
+    
 
     divTitulo.appendChild(titulo);
     divImagem.appendChild(img);

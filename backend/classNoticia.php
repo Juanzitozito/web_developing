@@ -106,7 +106,7 @@ class Noticia{
         function alterar(){
             try{
                 $database = DB::getInstance();
-                $consulta = $database->prepare("UPDATE noticia SET titulo = :titulo, imagem = :imagem, descricao = :descricao, conteudo = :conteudo, WHERE id = :id");
+                $consulta = $database->prepare("UPDATE noticia SET titulo = :titulo, imagem = :imagem, descricao = :descricao, conteudo = :conteudo WHERE id = :id");
                 $consulta->execute([
                     ":id" => $this->id,
                     ":titulo" => $this->titulo,

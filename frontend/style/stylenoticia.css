@@ -119,4 +119,22 @@ p{
     word-break: break-word;
 }
 
+#conteudoForm{
+    height: 25rem
+}
+
+#descricaoForm{
+    height: 7rem;
+}
+
+.modal-title{
+    color: black;
+}
+
+label{
+    color: black;
+}
+
+
+
 
