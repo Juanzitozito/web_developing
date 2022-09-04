@@ -1,6 +1,6 @@
 <?php
 
-require "classNoticia.php";
+require "classProduto.php";
 
 try {
     if(!isset($_FILES['imagem'])){
@@ -24,16 +24,18 @@ try {
             if ($filesize < 5000000) {
                 $filenamenew = uniqid('', true) . '.' . $fileactualext;
 
-                $filedestination = '../imagens/not/' . $filenamenew;
+                $filedestination = '../imagens/prod/' . $filenamenew;
 
                 move_uploaded_file($filetmpname, $filedestination);
 
-    $not = new Noticia();
-    $not->setTitulo($_POST['titulo']);
+    $not = new Produto();
+    $not->setNome($_POST['nome']);
     $not->setDescricao($_POST['descricao']);
     $not->setImagem($filedestination);
-    $not->setConteudo($_POST['conteudo']);
-    $not->setAutor($_POST['idAutor']);
+    $not->setpreco($_POST['preco']);
+    /* $not->setAutor($_POST['idAutor']); */
+    $not->setSiteProduto($_POST['siteProduto']);
+    $not->setEspecificacoes($_POST['especificacoes']);
     $not->inserir();
     print $not;
             } else {

@@ -1,5 +1,5 @@
 <?php
-require '/vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 require_once dirname(__FILE__) . "/classDB.php";
 require __DIR__ . '/interfaceCRUD.php';
 
@@ -13,6 +13,7 @@ require __DIR__ . '/interfaceCRUD.php';
         private $siteProduto = "";
         private $especificacoes = "";
         private $tipo = "";
+        /* private $idAutor; */
 
         function __toString(){
             return json_encode([
@@ -23,7 +24,8 @@ require __DIR__ . '/interfaceCRUD.php';
                 "siteProduto" => $this->siteProduto,
                 "tipo" => $this->tipo,
                 'imagem' => $this->imagem,
-                'especificacoes' => $this->especificacoes
+                'especificacoes' => $this->especificacoes,
+                
             ]);
         }
 
@@ -33,6 +35,15 @@ require __DIR__ . '/interfaceCRUD.php';
             $consulta->execute([":id" => $id]);
             $consulta->setFetchMode(PDO::FETCH_CLASS, "Produto");
             return $consulta->fetch();
+        }
+
+        static function findAll(){
+            $database = DB::getInstance();
+            $consulta = $database->prepare("SELECT * FROM produto LIMIT 20");
+            $consulta->execute();
+            $consulta->setFetchMode(PDO::FETCH_ASSOC);
+            $dados = $consulta->fetchAll();
+            return $dados;
         }
 
         function setNome($valor){
@@ -98,7 +109,7 @@ require __DIR__ . '/interfaceCRUD.php';
                 $this->id = $dados["id"];
             }
             catch(PDOException $e){
-                throw new Exception("Ocorreu um erro interno!");
+                throw new Exception($e->getMessage());
             }
         }
 
