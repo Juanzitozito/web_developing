@@ -126,7 +126,7 @@ onload = async () => {
 
            const cardPrice = document.createElement('h4')
            cardPrice.setAttribute('class', 'price')
-           cardPrice.innerHTML = prod.preco
+           cardPrice.innerHTML = 'R$ ' + prod.preco
 
            const cardText = document.createElement('p')
            cardText.setAttribute('class', 'card-text')
