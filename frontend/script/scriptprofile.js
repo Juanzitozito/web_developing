@@ -83,11 +83,18 @@ onload = async () => {
   const btnExcluir = document.getElementById("excluir");
   btnExcluir.addEventListener("click", async () => {
     const body = new FormData();
-    body.append(decodedToken.dados.id);
+    body.append('id',decodedToken.dados.id);
     const response = await fetch(`${backendUrl}removerUsuario.php`, {
       method: "POST",
       body,
     });
+
+    console.log(response)
+
+    if(!response.error){
+        localStorage.removeItem(token)
+        window.location.href = 'login.html'
+    }
   });
 
   document.getElementById("nomeForm").value = usuario.nome;
