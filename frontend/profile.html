@@ -45,25 +45,82 @@
 
     <div class="container-fluid" id="divPerfil">
       <div class="container" id="imagem">
-        <img src="imagens/kazuha.jpg" alt="..." />
+        <img src="../componentesimg/defaultProfile.jpg" alt="profile image" />
       </div>
       <div id="dados">
-        <p style="color: black">Nickname: KAZU</p>
-        <p style="color: black">Nome: Kaedehara kazuha</p>
-        <p style="color: black">Data nascimento: sei lá</p>
-        <p style="color: black">Cargo: ADM</p>
       </div>
       <div id="btns">
-        <button class="btn">alterar</button>
-        <button class="btn">excluir</button>
+        <button class="btn" data-bs-toggle="modal" data-bs-target="#alteracaoModal">alterar</button>
+        <button class="btn" data-bs-toggle="modal" data-bs-target="#exclusaoModal">excluir</button>
         <button class="btn" id="logout">logout</button>
       </div>
     </div>
 
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exclusaoModal" tabindex="-1" aria-labelledby="exclusaoModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exclusaoModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Você deseja mesmo excluir sua conta? Esta ação é irreversível.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-success" id="excluir">Confirmar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="alteracaoModal" tabindex="-1" aria-labelledby="alteracaoModalLabel" aria-hidden="true">
+      <!--Div do formulário de noticia-->
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="alteracaoModalLabel">Alterar usuário</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div>
+            <form method="POST" enctype="multipart/form-data">
+              <!--formulario de noticia-->
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label for="nomeForm" class="form-label">Nome</label>
+                  <input type="text" class="form-control" name="nome" id="nomeForm" >
+                </div>
+                <div class="mb-3">
+                  <label for="nickForm" class="form-label">Nick</label>
+                  <input type="text" class="form-control" name="nick" id="nickForm" ></input>
+                </div>
+                <div class="mb-3">
+                  <label for="emailForm" class="form-label">Email</label>
+                  <input type="email" class="form-control" name="email" id="emailForm" >
+                </div>
+                <div class="mb-3">
+                  <label for="senhaForm" class="form-label">Senha</label>
+                  <input type="password" class="form-control" name="senha" id="senhaForm"></input>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                <button id="alterarUsuario" type="button" class="btn btn-info">Alterar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script/scriptprofile.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
   </body>
 </html>

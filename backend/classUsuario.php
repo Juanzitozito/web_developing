@@ -1,12 +1,12 @@
 <?php
-require '../vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 require_once dirname(__FILE__) . "/classDB.php";
 require __DIR__ . '/interfaceCRUD.php';
 
     class Usuario{
 
         private $id;
-        private $nickname = "";
+        private $nick = "";
         private $nome = "";
         private $email = "";
         private $senha = "";
@@ -17,7 +17,7 @@ require __DIR__ . '/interfaceCRUD.php';
             return json_encode([
                 "id" => $this->id,
                 "nome" => $this->nome,
-                "nickname" => $this->nickname,
+                "nick" => $this->nick,
                 "email" => $this->email,
                 "senha" => $this->senha,
                 "dtnasc" => $this->dtnasc,
@@ -45,8 +45,8 @@ require __DIR__ . '/interfaceCRUD.php';
         function setDtnasc($valor){
             $this->dtnasc = $valor;
         }
-        function setNickname($valor){
-            $this->nickname = $valor;
+        function setNick($valor){
+            $this->nick = $valor;
         }
         function setCargo($valor){
             $this->cargo = $valor;
@@ -63,8 +63,8 @@ require __DIR__ . '/interfaceCRUD.php';
         function getDtnasc(){
             return $this->dtnasc;
         }
-        function getNickname(){
-            return $this->nickname;
+        function getNick(){
+            return $this->nick;
         }
         function getCargo(){
             return $this->cargo;
@@ -73,14 +73,13 @@ require __DIR__ . '/interfaceCRUD.php';
         function inserir(){
             try{
                 $database = DB::getInstance();
-                $consulta = $database->prepare("INSERT INTO usuario(email, nome, nickname, senha, dtnasc, cargo) VALUES (:email, :nome, :nickname, :senha, :dtnasc, :cargo)");
+                $consulta = $database->prepare("INSERT INTO usuario(email, nome, nick, senha, dtnasc, cargo) VALUES (:email, :nome, :nick, :senha, :dtnasc, 'usuario')");
                 $consulta->execute([
                     ":email" => $this->email,
                     ":nome" => $this->nome,
-                    ":nickname" => $this->nickname,
+                    ":nick" => $this->nick,
                     ":senha" => $this->senha,
                     ":dtnasc" => $this->dtnasc,
-                    ":cargo" => $this->cargo
 
                 ]);
                 $consulta = $database->prepare("SELECT id FROM usuario ORDER BY id DESC LIMIT 1");
@@ -96,12 +95,12 @@ require __DIR__ . '/interfaceCRUD.php';
         function alterar(){
             try{
                 $database = DB::getInstance();
-                $consulta = $database->prepare("UPDATE usuario SET email = :email, nome = :nome, nickname = :nickname, senha = :senha, dtnasc = :dtnasc, cargo = :cargo WHERE id = :id");
+                $consulta = $database->prepare("UPDATE usuario SET email = :email, nome = :nome, nick = :nick, senha = :senha, dtnasc = :dtnasc, cargo = :cargo WHERE id = :id");
                 $consulta->execute([
                     ":id" => $this->id,
                     ":email" => $this->email,
                     ":nome" => $this->nome,
-                    ":nickname" => $this->nickname,
+                    ":nick" => $this->nick,
                     ":senha" => $this->senha,
                     ":dtnasc" => $this->dtnasc,
                     ":cargo" => $this->cargo

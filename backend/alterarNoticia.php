@@ -41,7 +41,7 @@ try {
 
     $not = Noticia::findbyPk($id);
     if(!$not){
-        throw new Exception("Cardápio não encontrado!");
+        throw new Exception("Notícia não encontrada!");
     }
     $not->setTitulo($_POST['titulo']);
     $not->setDescricao($_POST['descricao']);

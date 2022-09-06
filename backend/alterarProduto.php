@@ -39,7 +39,7 @@ try {
 
     $prod = Produto::findbyPk($id);
     if(!$prod){
-        throw new Exception("Cardápio não encontrado!");
+        throw new Exception("Produto não encontrado!");
     }
     $prod->setNome($_POST['nome']);
     $prod->setDescricao($_POST['descricao']);

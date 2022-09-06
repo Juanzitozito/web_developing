@@ -60,3 +60,7 @@ label{
     color: black;
     font-size: 15px;
 }
+
+#btnRegistrar {
+    margin-top: 1rem;
+}

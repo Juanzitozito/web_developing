@@ -153,23 +153,22 @@ onload = async () => {
 
     botaoAlteraNot.addEventListener("click", async () => {
       const nomeForm = document.getElementById("nomeForm").value;
-      const especificacoesForm =
-        document.getElementById("especificacoesForm").value;
+      const especificacoesForm = document.getElementById("especificacoesForm").value;
       const descricaoForm = document.getElementById("descricaoForm").value;
       const imagemForm = document.getElementById("imagemForm").files[0];
       const siteProdutoForm = document.getElementById("siteProdutoForm").value;
       const precoForm = document.getElementById("precoForm").value;
 
       const body = new FormData();
-      body.append('id', produto.id)
+      body.append("id", produto.id);
       body.append("nome", nomeForm);
-      body.append("descricao", especificacoesForm);
+      body.append("especificacoes", especificacoesForm);
       body.append("imagem", imagemForm);
       body.append("siteProduto", siteProdutoForm);
       body.append("descricao", descricaoForm);
       body.append("preco", precoForm);
 
-      const response = await fetch(`${backendUrl}alterarNoticia.php`, {
+      const response = await fetch(`${backendUrl}alterarProduto.php`, {
         method: "POST",
         body,
       });
@@ -191,7 +190,7 @@ onload = async () => {
 
     if (token) {
       if (
-        decodedToken.dados.cargo == "usuario" ||
+        decodedToken.dados.cargo == "administrador" ||
         decodedToken.dados.cargo == "criador"
       ) {
         divAcoes.appendChild(botaoExcluir);
@@ -200,8 +199,6 @@ onload = async () => {
     }
   };
 
-
-  
   const Products = async () => {
     const response = await fetch(backendUrl + "produtos/indexlimit.php");
     const produtos = await response.json();
