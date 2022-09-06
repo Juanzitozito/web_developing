@@ -1,5 +1,5 @@
-const frontendUrl = "//localhost/arquivosphp/web_developing/frontend/";
-const backendUrl = "//localhost/arquivosphp/web_developing/backend/";
+const frontendUrl = "//localhost/web_developing/frontend/";
+const backendUrl = "//localhost/web_developing/backend/";
 
 let btnInserir = null;
 let btnLogout = null;

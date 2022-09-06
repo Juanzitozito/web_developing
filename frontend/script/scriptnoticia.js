@@ -1,5 +1,5 @@
-const frontendUrl = "//localhost/arquivosphp/web_developing/frontend/";
-const backendUrl = "//localhost/arquivosphp/web_developing/backend/";
+const frontendUrl = "//localhost/web_developing/frontend/";
+const backendUrl = "//localhost/web_developing/backend/";
 
 let btnInserir = null;
 let btnLogout = null;
@@ -164,9 +164,11 @@ onload = async () => {
       if(status.error){
         alert(status.message)
       
+      }else{
+        window.location.reload() 
       }
 
-       window.location.reload() 
+       
       
     })
 
@@ -179,8 +181,7 @@ onload = async () => {
     if (token) {
       if (
         decodedToken.dados.id == noticia.idAutor ||
-        decodedToken.dados.cargo == "administrador" ||
-        decodedToken.dados.cargo == "criador"
+        decodedToken.dados.cargo == "administrador" 
       ) {
         divAcoes.appendChild(botaoExcluir);
         divAcoes.appendChild(botaoAlterar);
@@ -215,7 +216,7 @@ onload = async () => {
            const divBody = document.createElement('div')
            divBody.setAttribute('class', 'card-body')
 
-           const cardTitle = document.createElement('header')
+           const cardTitle = document.createElement('h5')
            cardTitle.setAttribute('class', 'card-title')
            cardTitle.innerHTML = not.titulo
 
@@ -261,7 +262,7 @@ onload = async () => {
       para.append("id", bt.value);
 
       location.href =
-        "//localhost/arquivosphp/web_developing/frontend/noticia.html?" + para.toString();
+        "//localhost/web_developing/frontend/noticia.html?" + para.toString();
     });
   });
 };

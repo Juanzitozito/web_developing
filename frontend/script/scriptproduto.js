@@ -1,5 +1,5 @@
-const frontendUrl = "//localhost/arquivosphp/web_developing/frontend/";
-const backendUrl = "//localhost/arquivosphp/web_developing/backend/";
+const frontendUrl = "//localhost/web_developing/frontend/";
+const backendUrl = "//localhost/web_developing/backend/";
 
 let modal_noticia = null;
 
@@ -89,7 +89,9 @@ onload = async () => {
     const divDados = document.getElementById("dadosProduto");
     const divImagem = document.getElementById("divimgProduto");
     const divConteudo = document.getElementById("descricao");
-    const divAcoes = document.getElementById("divAcoes");
+
+    const divAcoes = document.createElement("div");
+     divAcoes.id = 'divAcoes'
 
     const nomeProd = document.createElement("h2");
     nomeProd.innerHTML = produto.nome + "<br>";
@@ -185,18 +187,20 @@ onload = async () => {
     divImagem.appendChild(img);
     divDados.appendChild(nomeProd);
     divDados.appendChild(precoProd);
+    divDados.appendChild(divAcoes);
     divConteudo.appendChild(descricaoProd);
-    divDados.appendChild(botaoloja);
+    
 
     if (token) {
       if (
-        decodedToken.dados.cargo == "administrador" ||
-        decodedToken.dados.cargo == "criador"
+        decodedToken.dados.cargo == "administrador"
       ) {
         divAcoes.appendChild(botaoExcluir);
         divAcoes.appendChild(botaoAlterar);
       }
     }
+
+    divAcoes.appendChild(botaoloja);
   };
 
   const Products = async () => {
@@ -260,4 +264,19 @@ onload = async () => {
 
   await MostraNoticia();
   await Products();
+
+  const botoes = document.querySelectorAll(".ir");
+
+  botoes.forEach((bt) => {
+    console.log(bt.value);
+
+    bt.addEventListener("click", async () => {
+      const para = new URLSearchParams();
+
+      para.append("id", bt.value);
+
+      location.href =
+        "//localhost/web_developing/frontend/produto.html?" + para.toString();
+    });
+  });
 };

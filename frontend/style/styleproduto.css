@@ -79,12 +79,7 @@ body{
 #dadosProduto{
    padding-top: 5rem;
 }
-#loja{
-    margin-top: 7rem;
-    margin-left: 10rem;
-    margin-bottom: 1rem;
-    
-}
+
 
 #descricao{
     padding: 10px 10px 10px 10px;
@@ -112,6 +107,10 @@ img {
 
 .ir{
     align-self: center;
+}
+
+#divAcoes{
+    margin-top: 2rem;
 }
 
 

@@ -12,7 +12,6 @@ CREATE TABLE produto(
     descricao varchar(500) NOT NULL,
     especificacoes varchar(2000) NOT NULL,
     siteProduto varchar(255) NOT NULL,
-    tipo varchar(40) NOT NULL,
     PRIMARY KEY(id)
 );
 

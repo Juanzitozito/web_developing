@@ -20,7 +20,6 @@ require __DIR__ . '/interfaceCRUD.php';
                 "preco" => $this->preco,
                 "descricao" => $this->descricao,
                 "siteProduto" => $this->siteProduto,
-                "tipo" => $this->tipo,
                 'imagem' => $this->imagem,
                 'especificacoes' => $this->especificacoes,
                 
@@ -99,13 +98,13 @@ require __DIR__ . '/interfaceCRUD.php';
         function inserir(){
             try{
                 $database = DB::getInstance();
-                $consulta = $database->prepare("INSERT INTO produto(nome, preco, descricao, siteProduto, tipo, imagem, especificacoes) VALUES (:nome, :preco, :descricao, :siteProduto, :tipo, :imagem, :especificacoes)");
+                $consulta = $database->prepare("INSERT INTO produto(nome, preco, descricao, siteProduto, imagem, especificacoes) VALUES (:nome, :preco, :descricao, :siteProduto, :imagem, :especificacoes)");
                 $consulta->execute([
                     ":nome" => $this->nome,
                     ":preco" => $this->preco,
                     ":descricao" => $this->descricao,
                     ":siteProduto" => $this->siteProduto,
-                    ":tipo" => $this->tipo,
+
                     ":imagem" => $this->imagem,
                     ":especificacoes" => $this->especificacoes
 
@@ -123,14 +122,13 @@ require __DIR__ . '/interfaceCRUD.php';
         function alterar(){
             try{
                 $database = DB::getInstance();
-                $consulta = $database->prepare("UPDATE produto SET nome = :nome, preco = :preco, descricao = :descricao, siteProduto = :siteProduto, tipo = :tipo, imagem = :imagem, especificacoes = :especificacoes WHERE id = :id");
+                $consulta = $database->prepare("UPDATE produto SET nome = :nome, preco = :preco, descricao = :descricao, siteProduto = :siteProduto, imagem = :imagem, especificacoes = :especificacoes WHERE id = :id");
                 $consulta->execute([
                     ":id" => $this->id,
                     ":nome" => $this->nome,
                     ":preco" => $this->preco,
                     ":descricao" => $this->descricao,
                     ":siteProduto" => $this->siteProduto,
-                    ":tipo" => $this->tipo,
                     ":imagem" => $this->imagem,
                     ":especificacoes" => $this->especificacoes
                 ]);

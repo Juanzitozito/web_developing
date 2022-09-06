@@ -1,5 +1,5 @@
-const frontendUrl = "//localhost/arquivosphp/web_developing/frontend/";
-const backendUrl = "//localhost/arquivosphp/web_developing/backend/";
+const frontendUrl = "//localhost/web_developing/frontend/";
+const backendUrl = "//localhost/web_developing/backend/";
 
 let btnLogin = null;
 let btnLogout = null;
@@ -163,7 +163,7 @@ onload = async () => {
       para.append("id", bt.value);
 
       location.href =
-        "//localhost/arquivosphp/web_developing/frontend/produto.html?" + para.toString();
+        "//localhost/web_developing/frontend/produto.html?" + para.toString();
     });
   });
 };
