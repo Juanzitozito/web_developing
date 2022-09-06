@@ -7,8 +7,10 @@ USE gamesite;
 CREATE TABLE produto(
     id int AUTO_INCREMENT NOT NULL,
     nome varchar(80) NOT NULL,
+    imagem varchar(255) NOT NULL,
     preco decimal(6,2) NOT NULL,
     descricao varchar(500) NOT NULL,
+    especificacoes varchar(2000) NOT NULL,
     siteProduto varchar(255) NOT NULL,
     tipo varchar(40) NOT NULL,
     PRIMARY KEY(id)
@@ -30,7 +32,7 @@ CREATE TABLE noticia(
     imagem varchar(255),
     titulo varchar(50) NOT NULL,
     descricao varchar(255) NOT NULL,
-    conteudo varchar(1000) NOT NULL,
+    conteudo varchar(5000) NOT NULL,
     dataPublicacao date NOT NULL,
     idAutor int NOT NULL,
     PRIMARY KEY(id),

@@ -46,6 +46,15 @@ require __DIR__ . '/interfaceCRUD.php';
             return $dados;
         }
 
+        static function find4(){
+            $database = DB::getInstance();
+            $consulta = $database->prepare("SELECT * FROM produto ORDER BY RAND() LIMIT 4");
+            $consulta->execute();
+            $consulta->setFetchMode(PDO::FETCH_ASSOC);
+            $dados = $consulta->fetchAll();
+            return $dados;
+        }
+
         function setNome($valor){
             $this->nome = $valor;
         }

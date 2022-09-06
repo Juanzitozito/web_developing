@@ -36,7 +36,7 @@
     <main>
         <div class="col-md-2" id="filtros">
             <div id='vai'>
-                <form>
+                <!-- <form>
                         <legend>Filtros</legend>
                         <div>
                             <input type="checkbox" id="yoy" name="filtro" checked>
@@ -46,7 +46,7 @@
                             <input type="checkbox" id="yay" name="filtro">
                             <label for="horns">Dois</label>
                         </div>
-                </form>
+                </form> -->
                 <button class="btn rec">Recomendações</button>
                 <button id="btnProduto" class="btn rec" data-bs-toggle="modal" data-bs-target="#produtoModal">
                     <img src="../componentesimg/btn.png" id="add">ADICIONAR
@@ -162,11 +162,11 @@
                       </div>
                       <div class="mb-3">
                         <label for="descricao" class="form-label">Descrição do Produto</label>
-                        <textarea class="form-control" name="descricao" id="descricao" placeholder="insira a descricao" required></textarea>
+                        <textarea class="form-control" name="descricao" id="descricao" placeholder="insira a descricao" maxlength="53" required></textarea>
                       </div>
                       <div class="mb-3">
                         <label for="especificacoes" class="form-label">Especificações do produto</label>
-                        <textarea class="form-control" name="especificacoes" id="especificacoes" placeholder="insira a descricao" required></textarea>
+                        <textarea class="form-control" name="especificacoes" id="especificacoes" placeholder="insira a descricao" maxlength="2000" required></textarea>
                       </div>
                     </div>
                     <div class="modal-footer">

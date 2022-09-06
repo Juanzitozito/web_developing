@@ -97,15 +97,6 @@ onload = async () => {
     
       produtos.forEach((prod) => {
         console.log(prod);
-         
-         
-           //divcard
-
-           //img
-
-           //divbody
-           // -> title
-           // -> text
 
            const divItem = document.createElement('div')
            divItem.setAttribute('class', 'col-lg-3')
@@ -122,7 +113,11 @@ onload = async () => {
 
            const cardTitle = document.createElement('h5')
            cardTitle.setAttribute('class', 'card-title')
+           if(prod.nome.length > 38){
+            cardTitle.innerHTML = prod.nome.substring(0,35) + '...';
+           }else{
            cardTitle.innerHTML = prod.nome
+           }
 
            const cardPrice = document.createElement('h4')
            cardPrice.setAttribute('class', 'price')
@@ -130,7 +125,11 @@ onload = async () => {
 
            const cardText = document.createElement('p')
            cardText.setAttribute('class', 'card-text')
+           if(prod.descricao.length > 53){
+            cardText.innerHTML = prod.descricao.substring(0,53);
+           }else{
            cardText.innerHTML = prod.descricao
+           }
 
            const botaoIr = document.createElement('button')
            botaoIr.setAttribute('class', 'btn ir')

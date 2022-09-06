@@ -49,21 +49,22 @@
     <div class="container-fluid">
       <div class="row prod" id="produto">
         <div class="col-lg-4" id="divimgProduto">
-          <img
+          <!-- <img
             src="imagens/teste3.jpg"
             alt="shish"
             class="img-fluid rounded"
             id="imgProduto"
-          />
+          /> -->
         </div>
         <div class="col-lg-8" id="dadosProduto">
-          <h2>SHEESH NFT</h2>
-          <h3 class="price"><u>Preço: R$ 250,00</u></h3>
-          <button class="btn" id="loja">Ir para o Site --></button>
+          <!-- <h2>SHEESH NFT</h2>
+          <h3 class="price"><u>Preço: R$ 250,00</u></h3> -->
+          <!-- <button class="btn" id="loja">Ir para o Site </button> -->
         </div>
+        <div id="divAcoes"></div>
       </div>
       <div class="row prod" id="descricao">
-        <h2>Descrição</h2>
+        <!-- <h2>Descrição</h2>
         <br />
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -82,12 +83,12 @@
           aliquip ex ea commodo consequat. Duis aute irure dolor in
           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
           pariatur. 
-        </p>
+        </p> -->
       </div>
       
       <div class="row" id="prodRelacionados">
         <h2 style="color: aliceblue">Produtos Relacionados</h2>
-        <div class="col-md-3">
+        <!-- <div class="col-md-3">
           <div class="card rel" style="width: 15rem">
             <img src="..." class="card-img-top" alt="..." />
             <div class="card-body">
@@ -140,6 +141,53 @@
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </p>
             </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+    <div class="modal fade" id="produtoModal" tabindex="-1" aria-labelledby="produtoModalLabel" aria-hidden="true">
+      <!--Div do formulário de noticia-->
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="produtoModalLabel">Inserir produto</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div>
+            <form method="POST" enctype="multipart/form-data">
+              <!--formulario de noticia-->
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label for="nomeForm" class="form-label">Nome</label>
+                  <input type="text" class="form-control" name="nome" id="nomeForm" placeholder="insira o nome">
+                </div>
+                <div class="mb-3">
+                  <label for="precoForm" class="form-label">preço em reais</label>
+                  <input type="number" class="form-control" name="preco" id="precoForm" placeholder="insira o preço em reais"></input>
+                </div>
+                <div class="mb-3">
+                  <label for="imagemForm" class="form-label">Imagem</label>
+                  <input type="file" class="form-control" name="imagem" id="imagemForm" placeholder="insira a imagem">
+                </div>
+                <div class="mb-3">
+                  <label for="siteProdutoForm" class="form-label">Site do produto</label>
+                  <input type="text" class="form-control" name="siteProduto" id="siteProdutoForm" placeholder="insira o site do produto" required></input>
+                </div>
+                <div class="mb-3">
+                  <label for="descricaoForm" class="form-label">Descrição do Produto</label>
+                  <textarea class="form-control" name="descricao" id="descricaoForm" placeholder="insira a descricao" maxlength="53" required></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="especificacoesForm" class="form-label">Especificações do produto</label>
+                  <textarea class="form-control" name="especificacoes" id="especificacoesForm" placeholder="insira a descricao" maxlength="2000" required></textarea>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                <button id="alterarProduto" type="button" class="btn btn-success">Adicionar</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
