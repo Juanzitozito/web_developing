@@ -35,7 +35,7 @@ try {
             if ($filesize < 5000000) {
                 $filenamenew = uniqid('', true) . '.' . $fileactualext;
 
-                $filedestination = '../imagens/' . $filenamenew;
+                $filedestination = '../imagens/not/' . $filenamenew;
 
                 move_uploaded_file($filetmpname, $filedestination);
 

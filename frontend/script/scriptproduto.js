@@ -8,7 +8,7 @@ onload = async () => {
   /* const modal_noticia = new bootstrap.Modal(
     document.getElementById("noticiaModal")
   ); */
-  const mainProductsCol = document.getElementById('prodRelacionados')
+  const mainProductsCol = document.getElementById("prodRelacionados");
 
   const pass = para.get("id");
 
@@ -73,10 +73,6 @@ onload = async () => {
     navbar.appendChild(btnLogin);
   }
 
-
-
-
-
   const body = new FormData();
   body.append("id", pass);
 
@@ -84,7 +80,6 @@ onload = async () => {
     method: "POST",
     body,
   });
-
 
   const produto = await response.json();
 
@@ -94,15 +89,14 @@ onload = async () => {
     const divDados = document.getElementById("dadosProduto");
     const divImagem = document.getElementById("divimgProduto");
     const divConteudo = document.getElementById("descricao");
-    const divAcoes = document.getElementById("divAcoes"); 
-    
+    const divAcoes = document.getElementById("divAcoes");
 
     const nomeProd = document.createElement("h2");
     nomeProd.innerHTML = produto.nome + "<br>";
 
-    const precoProd = document.createElement('h3');
-    precoProd.setAttribute('class', 'price')
-    precoProd.innerHTML = '<u>R$' + produto.preco + '</u>'
+    const precoProd = document.createElement("h3");
+    precoProd.setAttribute("class", "price");
+    precoProd.innerHTML = "<u>R$" + produto.preco + "</u>";
 
     const img = document.createElement("img");
     img.setAttribute("class", "img-fluid rounded");
@@ -110,17 +104,16 @@ onload = async () => {
     img.src = produto.imagem;
 
     const descricaoProd = document.createElement("p");
-    descricaoProd.innerHTML = '<h2>Especificações do produto</h2><br>' + produto.especificacoes;
+    descricaoProd.innerHTML =
+      "<h2>Especificações do produto</h2><br>" + produto.especificacoes;
 
-    const botaoloja = document.createElement('button')
-    botaoloja.setAttribute('class', 'btn')
-    botaoloja.setAttribute('id', 'loja')
-    botaoloja.innerHTML = 'Ir para o site da loja'
-    botaoloja.addEventListener('click', () =>{
-      window.location.href = produto.siteProduto
-    })
-
-
+    const botaoloja = document.createElement("button");
+    botaoloja.setAttribute("class", "btn");
+    botaoloja.setAttribute("id", "loja");
+    botaoloja.innerHTML = "Ir para o site da loja";
+    botaoloja.addEventListener("click", () => {
+      window.location.href = produto.siteProduto;
+    });
 
     const botaoExcluir = document.createElement("button");
     botaoExcluir.setAttribute("class", "btn btn-danger");
@@ -141,11 +134,14 @@ onload = async () => {
       }
     });
 
-    const nome = document.getElementById("nomeForm").value;
-    const descricao = document.getElementById("descricaoForm").value;
-    const especificacoes = document.getElementById("especificacoesForm").value;
-    const siteProduto = document.getElementById("siteProdutoForm").value;
-    const preco = document.getElementById("precoForm").value;
+    const nome = (document.getElementById("nomeForm").value = produto.nome);
+    const descricao = (document.getElementById("descricaoForm").value =
+      produto.descricao);
+    const especificacoes = (document.getElementById(
+      "especificacoesForm"
+    ).value = produto.especificacoes);
+    document.getElementById("siteProdutoForm").value = produto.siteProduto;
+    document.getElementById("precoForm").value = produto.preco;
 
     const botaoAlterar = document.createElement("button");
     botaoAlterar.setAttribute("class", "btn btn-info");
@@ -153,43 +149,46 @@ onload = async () => {
     botaoAlterar.setAttribute("data-bs-toggle", "modal");
     botaoAlterar.setAttribute("data-bs-target", "#produtoModal");
 
-    const botaoAlteraNot = document.getElementById('alterarProduto')
+    const botaoAlteraNot = document.getElementById("alterarProduto");
 
-     botaoAlteraNot.addEventListener('click', async () => {
-    const nomeForm = document.getElementById("nomeForm").value;
-    const especificacoesForm = document.getElementById("especificacoesForm").value;
-    const descricaoForm = document.getElementById("descricaoForm").value;
-    const imagemForm = document.getElementById("imagemForm").files[0];
-    const siteProdutoForm = document.getElementById("siteProdutoForm").value;
-    const precoForm = document.getElementById("precoForm").value;
+    botaoAlteraNot.addEventListener("click", async () => {
+      const nomeForm = document.getElementById("nomeForm").value;
+      const especificacoesForm =
+        document.getElementById("especificacoesForm").value;
+      const descricaoForm = document.getElementById("descricaoForm").value;
+      const imagemForm = document.getElementById("imagemForm").files[0];
+      const siteProdutoForm = document.getElementById("siteProdutoForm").value;
+      const precoForm = document.getElementById("precoForm").value;
 
-    const body = new FormData();
-    body.append("nome", nomeForm);
-    body.append("descricao", especificacoesForm);
-    body.append("imagem", imagemForm);
-    body.append("siteProduto", siteProdutoForm);
-    body.append('descricao', descricaoForm)
-    body.append('preco', precoForm)
-    
-      const response = await fetch(`${backendUrl}alterarNoticia.php`, {method: 'POST', body})
+      const body = new FormData();
+      body.append('id', produto.id)
+      body.append("nome", nomeForm);
+      body.append("descricao", especificacoesForm);
+      body.append("imagem", imagemForm);
+      body.append("siteProduto", siteProdutoForm);
+      body.append("descricao", descricaoForm);
+      body.append("preco", precoForm);
 
-      const status = await response.json()
-      
-      if(status.error){
-        alert(status.message)
-      
+      const response = await fetch(`${backendUrl}alterarNoticia.php`, {
+        method: "POST",
+        body,
+      });
+
+      const status = await response.json();
+
+      if (status.error) {
+        alert(status.message);
       }
 
-       window.location.reload() 
-      
-    }) 
+      window.location.reload();
+    });
 
-    divImagem.appendChild(img)
-    divDados.appendChild(nomeProd)
-    divDados.appendChild(precoProd)
-    divConteudo.appendChild(descricaoProd)
-    divDados.appendChild(botaoloja)
-    
+    divImagem.appendChild(img);
+    divDados.appendChild(nomeProd);
+    divDados.appendChild(precoProd);
+    divConteudo.appendChild(descricaoProd);
+    divDados.appendChild(botaoloja);
+
     if (token) {
       if (
         decodedToken.dados.cargo == "usuario" ||
@@ -202,75 +201,64 @@ onload = async () => {
   };
 
 
-
-
-
-
-
+  
   const Products = async () => {
     const response = await fetch(backendUrl + "produtos/indexlimit.php");
     const produtos = await response.json();
     console.log(produtos);
 
-    
-      produtos.forEach((prod) => {
-        console.log(prod);
-         
-        if(produto.id != prod.id){
-        
+    produtos.forEach((prod) => {
+      console.log(prod);
 
-           const divItem = document.createElement('div')
-           divItem.setAttribute('class', 'col-lg-3')
+      if (produto.id != prod.id) {
+        const divItem = document.createElement("div");
+        divItem.setAttribute("class", "col-lg-3");
 
-           const divCard = document.createElement('DIV')
-           divCard.setAttribute('class', 'card prodList')
-           
-           const imgCard = document.createElement('img')
-           imgCard.setAttribute('class', 'card-img-top')
-           imgCard.src = prod.imagem
+        const divCard = document.createElement("DIV");
+        divCard.setAttribute("class", "card prodList");
 
-           const divBody = document.createElement('div')
-           divBody.setAttribute('class', 'card-body')
+        const imgCard = document.createElement("img");
+        imgCard.setAttribute("class", "card-img-top");
+        imgCard.src = prod.imagem;
 
-           const cardTitle = document.createElement('h5')
-           cardTitle.setAttribute('class', 'card-title')
-           if(prod.nome.length > 38){
-            cardTitle.innerHTML = prod.nome.substring(0,35) + '...';
-           }else{
-           cardTitle.innerHTML = prod.nome
-           }
+        const divBody = document.createElement("div");
+        divBody.setAttribute("class", "card-body");
 
-           const cardPrice = document.createElement('h4')
-           cardPrice.setAttribute('class', 'price')
-           cardPrice.innerHTML = 'R$ ' + prod.preco
-
-           const cardText = document.createElement('p')
-           cardText.setAttribute('class', 'card-text')
-           if(prod.descricao.length > 53){
-            cardText.innerHTML = prod.descricao.substring(0,53);
-           }else{
-           cardText.innerHTML = prod.descricao
-           }
-
-           const botaoIr = document.createElement('button')
-           botaoIr.setAttribute('class', 'btn ir')
-           botaoIr.setAttribute("value", prod.id);
-           botaoIr.innerHTML = "ver produto";
-
-
-           mainProductsCol.appendChild(divItem)
-           divItem.appendChild(divCard)
-           divCard.appendChild(imgCard)
-           divCard.appendChild(divBody)
-           divCard.appendChild(botaoIr)
-           divBody.appendChild(cardTitle)
-           divBody.appendChild(cardPrice)
-           divBody.appendChild(cardText)
+        const cardTitle = document.createElement("h5");
+        cardTitle.setAttribute("class", "card-title");
+        if (prod.nome.length > 38) {
+          cardTitle.innerHTML = prod.nome.substring(0, 35) + "...";
+        } else {
+          cardTitle.innerHTML = prod.nome;
         }
-        
-        
-      });
-   
+
+        const cardPrice = document.createElement("h4");
+        cardPrice.setAttribute("class", "price");
+        cardPrice.innerHTML = "R$ " + prod.preco;
+
+        const cardText = document.createElement("p");
+        cardText.setAttribute("class", "card-text");
+        if (prod.descricao.length > 53) {
+          cardText.innerHTML = prod.descricao.substring(0, 53);
+        } else {
+          cardText.innerHTML = prod.descricao;
+        }
+
+        const botaoIr = document.createElement("button");
+        botaoIr.setAttribute("class", "btn ir");
+        botaoIr.setAttribute("value", prod.id);
+        botaoIr.innerHTML = "ver produto";
+
+        mainProductsCol.appendChild(divItem);
+        divItem.appendChild(divCard);
+        divCard.appendChild(imgCard);
+        divCard.appendChild(divBody);
+        divCard.appendChild(botaoIr);
+        divBody.appendChild(cardTitle);
+        divBody.appendChild(cardPrice);
+        divBody.appendChild(cardText);
+      }
+    });
   };
 
   await MostraNoticia();

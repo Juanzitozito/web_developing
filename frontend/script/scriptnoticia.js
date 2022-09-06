@@ -204,13 +204,6 @@ onload = async () => {
         console.log(not);
          
          if(not.id != noticia.id){ 
-           //divcard
-
-           //img
-
-           //divbody
-           // -> title
-           // -> text
 
            const divCard = document.createElement('DIV')
            divCard.setAttribute('class', 'card not')

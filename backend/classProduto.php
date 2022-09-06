@@ -12,8 +12,6 @@ require __DIR__ . '/interfaceCRUD.php';
         private $descricao = "";
         private $siteProduto = "";
         private $especificacoes = "";
-        private $tipo = "";
-        /* private $idAutor; */
 
         function __toString(){
             return json_encode([

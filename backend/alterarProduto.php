@@ -9,8 +9,6 @@ try {
 
     $id = $_POST['id'];
 
-
-
     $produto = Produto::findbyPk($id);
     $imgAntiga = $produto->getImagem();
 
